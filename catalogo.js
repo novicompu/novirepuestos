@@ -162,19 +162,56 @@ class CatalogoManager {
             if (imagenes.length > 1) {
                 const img = card.querySelector('.producto-imagen img');
                 const indicadores = card.querySelectorAll('.card-indicador');
+                let currentIndex = 0;
+                let autoPlayInterval = null;
                 
+                // Función para cambiar a una imagen específica
+                const cambiarImagen = (index) => {
+                    currentIndex = index;
+                    img.src = imagenes[index];
+                    img.setAttribute('data-imagen-index', index);
+                    
+                    // Actualizar indicadores
+                    indicadores.forEach((ind, i) => {
+                        ind.classList.toggle('active', i === index);
+                    });
+                };
+                
+                // Auto-play: cambiar imagen cada 2 segundos
+                const iniciarAutoPlay = () => {
+                    autoPlayInterval = setInterval(() => {
+                        currentIndex = (currentIndex + 1) % imagenes.length;
+                        cambiarImagen(currentIndex);
+                    }, 2000);
+                };
+                
+                // Detener auto-play
+                const detenerAutoPlay = () => {
+                    if (autoPlayInterval) {
+                        clearInterval(autoPlayInterval);
+                        autoPlayInterval = null;
+                    }
+                };
+                
+                // Click en indicadores
                 indicadores.forEach((indicador, index) => {
                     indicador.addEventListener('click', (e) => {
                         e.stopPropagation();
-                        img.src = imagenes[index];
-                        img.setAttribute('data-imagen-index', index);
-                        
-                        // Actualizar indicadores
-                        indicadores.forEach((ind, i) => {
-                            ind.classList.toggle('active', i === index);
-                        });
+                        detenerAutoPlay();
+                        cambiarImagen(index);
+                        iniciarAutoPlay();
                     });
                 });
+                
+                // Pausar auto-play cuando el mouse está sobre la imagen
+                img.addEventListener('mouseenter', detenerAutoPlay);
+                img.addEventListener('mouseleave', iniciarAutoPlay);
+                
+                // Iniciar auto-play
+                iniciarAutoPlay();
+                
+                // Guardar referencia para limpiar después si es necesario
+                card.carruselAutoPlay = autoPlayInterval;
             }
         });
     }
@@ -310,8 +347,14 @@ class CatalogoManager {
                 <button class="modal-close">&times;</button>
                 <div class="modal-header">
                     ${galeriaHTML}
-                    <div>
-                        <h2>${producto.nombre}</h2>
+                    <div class="modal-info">
+                        <div class="modal-title-row">
+                            <h2>${producto.nombre}</h2>
+                            <button class="btn btn-primary btn-contactar btn-cotizar-header">
+                                <i class="fas fa-envelope"></i>
+                                Solicitar cotización
+                            </button>
+                        </div>
                         <div class="modal-precio">
                             <span class="precio-valor">$${this.formatearPrecio(producto.precio)}</span>
                             <span class="precio-nota">(sin IVA)</span>
@@ -327,20 +370,8 @@ class CatalogoManager {
                         `).join('')}
                     </ul>
                 </div>
-                <div class="modal-footer">
-                    <button class="btn btn-primary btn-contactar">
-                        <i class="fas fa-envelope"></i>
-                        Solicitar cotización
-                    </button>
-                    <button class="btn btn-secondary modal-close-btn">Cerrar</button>
-                </div>
             </div>
         `;
-        
-        // Event listener para botón cerrar del footer
-        modal.querySelector('.modal-close-btn').addEventListener('click', () => {
-            this.cerrarModal(modal);
-        });
         
         // Event listener para ampliar imagen al hacer clic
         const imagenActual = modal.querySelector('.modal-imagen img');
@@ -353,20 +384,57 @@ class CatalogoManager {
         if (imagenesProducto.length > 1) {
             const img = modal.querySelector('.modal-imagen img');
             const indicadores = modal.querySelectorAll('.indicador');
+            let currentIndex = 0;
+            let modalAutoPlayInterval = null;
+            
+            // Función para cambiar a una imagen específica
+            const cambiarImagenModal = (index) => {
+                currentIndex = index;
+                img.src = imagenesProducto[index];
+                img.setAttribute('data-imagen-index', index);
+                
+                // Actualizar indicadores
+                indicadores.forEach((ind, i) => {
+                    ind.classList.toggle('active', i === index);
+                });
+            };
+            
+            // Auto-play: cambiar imagen cada 2 segundos
+            const iniciarAutoPlayModal = () => {
+                modalAutoPlayInterval = setInterval(() => {
+                    currentIndex = (currentIndex + 1) % imagenesProducto.length;
+                    cambiarImagenModal(currentIndex);
+                }, 2000);
+            };
+            
+            // Detener auto-play
+            const detenerAutoPlayModal = () => {
+                if (modalAutoPlayInterval) {
+                    clearInterval(modalAutoPlayInterval);
+                    modalAutoPlayInterval = null;
+                }
+            };
             
             // Indicadores clickeables
             indicadores.forEach((indicador, index) => {
                 indicador.addEventListener('click', (e) => {
                     e.stopPropagation();
-                    img.src = imagenesProducto[index];
-                    img.setAttribute('data-imagen-index', index);
-                    
-                    // Actualizar indicadores
-                    indicadores.forEach((ind, i) => {
-                        ind.classList.toggle('active', i === index);
-                    });
+                    detenerAutoPlayModal();
+                    cambiarImagenModal(index);
+                    iniciarAutoPlayModal();
                 });
             });
+            
+            // Pausar auto-play cuando el mouse está sobre la imagen
+            const imagenContainer = modal.querySelector('.modal-imagen');
+            imagenContainer.addEventListener('mouseenter', detenerAutoPlayModal);
+            imagenContainer.addEventListener('mouseleave', iniciarAutoPlayModal);
+            
+            // Iniciar auto-play
+            iniciarAutoPlayModal();
+            
+            // Detener auto-play cuando se cierre el modal
+            modal.modalAutoPlay = modalAutoPlayInterval;
         }
         
         return modal;
@@ -415,6 +483,11 @@ class CatalogoManager {
 
     // Cerrar modal
     cerrarModal(modal) {
+        // Detener auto-play del modal si existe
+        if (modal.modalAutoPlay) {
+            clearInterval(modal.modalAutoPlay);
+        }
+        
         modal.classList.remove('active');
         setTimeout(() => {
             if (document.body.contains(modal)) {

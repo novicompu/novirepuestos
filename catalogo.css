@@ -102,15 +102,15 @@
 
 .nota-precios i {
     color: var(--accent-color);
-    font-size: 1.5rem;
-    margin-top: 0.25rem;
+    font-size: 1.2rem;
+    margin-top: 0.15rem;
 }
 
 .nota-precios p {
     margin: 0;
     color: var(--text-dark);
-    line-height: 1.6;
-    font-size: 0.95rem;
+    line-height: 1.5;
+    font-size: 0.8rem;
 }
 
 /* Modal de producto */
@@ -214,9 +214,28 @@
     object-fit: contain;
 }
 
+.modal-info {
+    flex: 1;
+}
+
+.modal-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
 .modal-header h2 {
-    margin: 0 0 0.5rem 0;
+    margin: 0;
     font-size: 1.8rem;
+    flex: 1;
+}
+
+.btn-cotizar-header {
+    white-space: nowrap;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.95rem;
 }
 
 .modal-precio {
@@ -279,18 +298,7 @@
     margin-top: 0.2rem;
 }
 
-.modal-footer {
-    padding: 1.5rem 2rem;
-    background: var(--light-bg);
-    border-radius: 0 0 20px 20px;
-    display: flex;
-    gap: 1rem;
-    justify-content: flex-end;
-}
-
-.modal-footer .btn {
-    padding: 12px 30px;
-}
+/* Modal footer eliminado - botón de cotización movido al header */
 
 /* Responsive */
 @media (max-width: 768px) {
@@ -314,8 +322,18 @@
         text-align: center;
     }
     
+    .modal-title-row {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
     .modal-header h2 {
         font-size: 1.5rem;
+    }
+    
+    .btn-cotizar-header {
+        width: 100%;
     }
     
     .modal-precio {
@@ -324,14 +342,6 @@
     
     .modal-especificaciones {
         grid-template-columns: 1fr;
-    }
-    
-    .modal-footer {
-        flex-direction: column;
-    }
-    
-    .modal-footer .btn {
-        width: 100%;
     }
     
     .producto-precio {
@@ -348,8 +358,15 @@
         padding: 1.5rem;
     }
     
-    .modal-footer {
-        padding: 1rem 1.5rem;
+    .modal-title-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    .btn-cotizar-header {
+        width: 100%;
+        justify-content: center;
     }
     
     .nota-precios {

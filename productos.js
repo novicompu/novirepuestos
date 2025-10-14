@@ -209,8 +209,8 @@ const productos = [
     {
         id: 12,
         categoria: 'suspension',
-        nombre: 'SUSPENSIÓN DE EJES MECÁNICA (2 EJES)',
-        descripcion: 'Sistema completo de suspensión mecánica para 2 ejes con ballestas y componentes heavy-duty.',
+        nombre: 'SUSPENSIÓN DE EJES MECÁNICA',
+        descripcion: 'Sistema completo de suspensión mecánica con ballestas y componentes heavy-duty para semirremolques.',
         precio: 1086.95,
         imagen: 'assets/suspension de ejes mecanica.jpeg',
         especificaciones: [
@@ -218,28 +218,12 @@ const productos = [
             'Paquete de ballestas: 10 hojas por lado',
             'Hojas principales: 5 hojas de 90 mm × 12 mm',
             'Estructura: placas y soportes de 8 mm heavy-duty',
-            'Equalizer central: distribuye carga',
-            'Acabado: pintura anticorrosiva horneada',
-            'Pernos en U y herrajes: grado automotriz',
-            'Bujes/silentblocks de alta resistencia'
-        ]
-    },
-    {
-        id: 13,
-        categoria: 'suspension',
-        nombre: 'SUSPENSIÓN DE EJES MECÁNICA (3 EJES)',
-        descripcion: 'Sistema completo de suspensión mecánica para 3 ejes con ballestas y componentes heavy-duty.',
-        precio: 1434.95,
-        imagen: 'assets/suspension de ejes mecanica.jpeg',
-        especificaciones: [
-            'Compatibilidad: muñones de 5″ y 6″',
-            'Paquete de ballestas: 10 hojas por lado',
-            'Hojas principales: 5 hojas de 90 mm × 12 mm',
-            'Estructura: placas y soportes de 8 mm heavy-duty',
-            'Equalizer central: distribuye carga',
-            'Acabado: pintura anticorrosiva horneada',
-            'Aplicación: semirremolques y plataformas',
-            'Alta estabilidad'
+            'Equalizer central: distribuye carga, alta estabilidad',
+            'Acabado: pintura anticorrosiva horneada, durabilidad',
+            'Aplicación: semirremolques y plataformas de servicio',
+            'Pernos en U y herrajes: grado automotriz, alta resistencia',
+            'Bujes/silentblocks: alta resistencia para reducir vibración y desgaste',
+            '2 EJES: $1,086.95 | 3 EJES: $1,434.95'
         ]
     }
 ];
