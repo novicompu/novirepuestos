@@ -57,18 +57,29 @@ class CatalogoManager {
         console.log('Productos filtrados:', productosFiltrados);
         console.log('Categoría actual:', this.categoriaActual);
         
-        productosGrid.innerHTML = productosFiltrados.map(producto => `
+        productosGrid.innerHTML = productosFiltrados.map(producto => {
+            const imagenes = producto.imagenes || [producto.imagen];
+            const tieneGaleria = imagenes.length > 1;
+            
+            return `
             <div class="producto-card" data-producto-id="${producto.id}">
-                <div class="producto-icon">
-                    <i class="${producto.imagen}"></i>
+                <div class="producto-imagen-container ${tieneGaleria ? 'tiene-galeria' : ''}">
+                    <div class="producto-imagen">
+                        <img src="${imagenes[0]}" alt="${producto.nombre}" loading="lazy" data-imagen-index="0">
+                    </div>
+                    ${tieneGaleria ? `
+                        <div class="card-galeria-indicadores">
+                            ${imagenes.map((_, index) => `
+                                <span class="card-indicador ${index === 0 ? 'active' : ''}" data-index="${index}"></span>
+                            `).join('')}
+                        </div>
+                    ` : ''}
                 </div>
                 ${producto.destacado ? '<span class="producto-badge">Destacado</span>' : ''}
                 <h3>${producto.nombre}</h3>
                 <p>${producto.descripcion}</p>
                 <div class="producto-precio">
-                    <span class="precio-label">Precio:</span>
-                    <span class="precio-valor">$${this.formatearPrecio(producto.precio)}</span>
-                    <span class="precio-nota">(sin IVA)</span>
+                    <span class="precio-valor">$${this.formatearPrecio(producto.precio)} <span class="precio-nota">(sin IVA)</span></span>
                 </div>
                 <ul class="producto-features">
                     ${producto.especificaciones.slice(0, 4).map(spec => `
@@ -77,7 +88,8 @@ class CatalogoManager {
                 </ul>
                 <button class="btn-producto" data-producto-id="${producto.id}">Ver detalles</button>
             </div>
-        `).join('');
+            `;
+        }).join('');
         
         this.attachProductEventListeners();
     }
@@ -131,6 +143,87 @@ class CatalogoManager {
                 this.mostrarDetalleProducto(productoId);
             });
         });
+        
+        // Event listeners para las imágenes principales
+        document.querySelectorAll('.producto-imagen img').forEach(img => {
+            img.style.cursor = 'pointer';
+            img.addEventListener('click', (e) => {
+                e.stopPropagation();
+                this.mostrarImagenCompleta(e.target.src, e.target.alt);
+            });
+        });
+        
+        // Carrusel en las tarjetas de productos
+        document.querySelectorAll('.producto-card').forEach(card => {
+            const productoId = parseInt(card.dataset.productoId);
+            const producto = this.productos.find(p => p.id === productoId);
+            const imagenes = producto?.imagenes || [producto?.imagen];
+            
+            if (imagenes.length > 1) {
+                const img = card.querySelector('.producto-imagen img');
+                const indicadores = card.querySelectorAll('.card-indicador');
+                
+                indicadores.forEach((indicador, index) => {
+                    indicador.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        img.src = imagenes[index];
+                        img.setAttribute('data-imagen-index', index);
+                        
+                        // Actualizar indicadores
+                        indicadores.forEach((ind, i) => {
+                            ind.classList.toggle('active', i === index);
+                        });
+                    });
+                });
+            }
+        });
+    }
+    
+    // Mostrar imagen completa en lightbox
+    mostrarImagenCompleta(src, alt) {
+        const lightbox = document.createElement('div');
+        lightbox.className = 'imagen-lightbox';
+        lightbox.innerHTML = `
+            <div class="lightbox-overlay"></div>
+            <div class="lightbox-contenido">
+                <button class="lightbox-close">&times;</button>
+                <img src="${src}" alt="${alt}" loading="eager">
+                <p class="lightbox-caption">${alt}</p>
+            </div>
+        `;
+        
+        document.body.appendChild(lightbox);
+        
+        // Prevenir scroll del body
+        document.body.style.overflow = 'hidden';
+        
+        // Animar entrada
+        setTimeout(() => {
+            lightbox.classList.add('active');
+        }, 10);
+        
+        // Event listeners para cerrar
+        const cerrarLightbox = () => {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+            setTimeout(() => {
+                if (document.body.contains(lightbox)) {
+                    document.body.removeChild(lightbox);
+                }
+            }, 300);
+        };
+        
+        lightbox.querySelector('.lightbox-close').addEventListener('click', cerrarLightbox);
+        lightbox.querySelector('.lightbox-overlay').addEventListener('click', cerrarLightbox);
+        
+        // Cerrar con tecla ESC
+        const handleEsc = (e) => {
+            if (e.key === 'Escape') {
+                cerrarLightbox();
+                document.removeEventListener('keydown', handleEsc);
+            }
+        };
+        document.addEventListener('keydown', handleEsc);
     }
 
     // Cambiar categoría
@@ -189,14 +282,34 @@ class CatalogoManager {
     crearModalDetalle(producto) {
         const modal = document.createElement('div');
         modal.className = 'producto-modal';
+        
+        // Crear galería de imágenes si hay múltiples
+        const imagenes = producto.imagenes || [producto.imagen];
+        const galeriaHTML = imagenes.length > 1 ? `
+            <div class="modal-galeria">
+                <div class="modal-imagen imagen-clickeable" title="Click para ver imagen completa">
+                    <img src="${imagenes[0]}" alt="${producto.nombre}" data-imagen-index="0">
+                    <div class="imagen-zoom-hint"><i class="fas fa-search-plus"></i></div>
+                </div>
+                <div class="galeria-indicadores">
+                    ${imagenes.map((_, index) => `
+                        <span class="indicador ${index === 0 ? 'active' : ''}" data-index="${index}"></span>
+                    `).join('')}
+                </div>
+            </div>
+        ` : `
+            <div class="modal-imagen imagen-clickeable" title="Click para ver imagen completa">
+                <img src="${producto.imagen}" alt="${producto.nombre}">
+                <div class="imagen-zoom-hint"><i class="fas fa-search-plus"></i></div>
+            </div>
+        `;
+        
         modal.innerHTML = `
             <div class="modal-overlay"></div>
             <div class="modal-content">
                 <button class="modal-close">&times;</button>
                 <div class="modal-header">
-                    <div class="modal-icon">
-                        <i class="${producto.imagen}"></i>
-                    </div>
+                    ${galeriaHTML}
                     <div>
                         <h2>${producto.nombre}</h2>
                         <div class="modal-precio">
@@ -229,7 +342,75 @@ class CatalogoManager {
             this.cerrarModal(modal);
         });
         
+        // Event listener para ampliar imagen al hacer clic
+        const imagenActual = modal.querySelector('.modal-imagen img');
+        modal.querySelector('.modal-imagen').addEventListener('click', () => {
+            this.mostrarImagenCompleta(imagenActual.src, producto.nombre);
+        });
+        
+        // Funcionalidad de carrusel si hay múltiples imágenes
+        const imagenesProducto = producto.imagenes || [producto.imagen];
+        if (imagenesProducto.length > 1) {
+            const img = modal.querySelector('.modal-imagen img');
+            const indicadores = modal.querySelectorAll('.indicador');
+            
+            // Indicadores clickeables
+            indicadores.forEach((indicador, index) => {
+                indicador.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    img.src = imagenesProducto[index];
+                    img.setAttribute('data-imagen-index', index);
+                    
+                    // Actualizar indicadores
+                    indicadores.forEach((ind, i) => {
+                        ind.classList.toggle('active', i === index);
+                    });
+                });
+            });
+        }
+        
         return modal;
+    }
+
+    // Mostrar imagen completa en lightbox
+    mostrarImagenCompleta(imagenUrl, nombreProducto) {
+        const lightbox = document.createElement('div');
+        lightbox.className = 'imagen-lightbox';
+        lightbox.innerHTML = `
+            <div class="lightbox-overlay"></div>
+            <div class="lightbox-content">
+                <button class="lightbox-close">&times;</button>
+                <img src="${imagenUrl}" alt="${nombreProducto}">
+                <p class="lightbox-caption">${nombreProducto}</p>
+            </div>
+        `;
+        
+        document.body.appendChild(lightbox);
+        
+        // Animar entrada
+        setTimeout(() => {
+            lightbox.classList.add('active');
+        }, 10);
+        
+        // Cerrar al hacer clic en el overlay, botón o presionar ESC
+        const cerrarLightbox = () => {
+            lightbox.classList.remove('active');
+            setTimeout(() => {
+                if (document.body.contains(lightbox)) {
+                    document.body.removeChild(lightbox);
+                }
+            }, 300);
+        };
+        
+        lightbox.querySelector('.lightbox-close').addEventListener('click', cerrarLightbox);
+        lightbox.querySelector('.lightbox-overlay').addEventListener('click', cerrarLightbox);
+        
+        document.addEventListener('keydown', function escHandler(e) {
+            if (e.key === 'Escape') {
+                cerrarLightbox();
+                document.removeEventListener('keydown', escHandler);
+            }
+        });
     }
 
     // Cerrar modal

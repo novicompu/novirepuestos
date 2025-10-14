@@ -6,7 +6,16 @@ const productos = [
         nombre: 'PLATAFORMA 3 EJES',
         descripcion: 'Plataforma especializada para transporte de carga pesada con capacidad de hasta 50 toneladas.',
         precio: 17391.30,
-        imagen: 'fas fa-truck-loading',
+        imagen: 'assets/plataforma 3 ejes.jpeg',
+        imagenes: [
+            'assets/plataforma 3 ejes.jpeg',
+            'assets/plataforma 3 ejes blanco1.jpg',
+            'assets/plataforma 3 ejes blanco2.jpg',
+            'assets/plataforma 3 ejes blanco3.jpg',
+            'assets/plataforma 3 ejes blanco4.jpg',
+            'assets/plataforma 3 ejes blanco5.jpg',
+            'assets/plataforma 3 ejes blanco6.jpg'
+        ],
         especificaciones: [
             'Dimensiones: 12.5 m × 2.55 m × 1.55 m',
             'Capacidad de carga: hasta 50.000 kg',
@@ -31,7 +40,7 @@ const productos = [
         nombre: 'EJE AMERICANO 13 T (5″)',
         descripcion: 'Eje tipo americano de 13 toneladas, con perfil de 127 × 127 mm (5″), robusto y confiable.',
         precio: 626.08,
-        imagen: 'fas fa-minus',
+        imagen: 'assets/eje americano 13t 420x180.jpg',
         especificaciones: [
             'Longitud de vía: 1840 mm',
             'Rodamiento Interior: 518445',
@@ -49,7 +58,7 @@ const productos = [
         nombre: 'EJE AMERICANO 13 T (6″)',
         descripcion: 'Eje tipo americano de 13 toneladas, con perfil de 150 × 150 mm (6″), diseñado para soporte resistente.',
         precio: 626.08,
-        imagen: 'fas fa-minus',
+        imagen: 'assets/eje americano 13t 420x220.jpg',
         especificaciones: [
             'Longitud de vía: 1840 mm',
             'Rodamiento Interior: 518445',
@@ -67,7 +76,7 @@ const productos = [
         nombre: 'BALLESTAS',
         descripcion: 'Juego de ballestas para suspensión mecánica de tráiler, proporciona soporte resistente y estabilidad.',
         precio: 130.43,
-        imagen: 'fas fa-compress-arrows-alt',
+        imagen: 'assets/ballestas.jpg',
         especificaciones: [
             'Ancho: 90 mm',
             'Grosor: 12 mm',
@@ -83,7 +92,7 @@ const productos = [
         nombre: 'PULMÓN DOBLE ACCIÓN T3030',
         descripcion: 'Cámara de freno neumática modelo T3030 para sistemas de frenado en remolques.',
         precio: 21.74,
-        imagen: 'fas fa-circle',
+        imagen: 'assets/pulmon doble accion.jpg',
         especificaciones: [
             'Modelo: T3030',
             'Doble acción',
@@ -99,7 +108,7 @@ const productos = [
         nombre: 'BLOQUEO DE GIRO',
         descripcion: 'Sistema de bloqueo de giro para bastidores de tráiler, impide el giro no deseado del eje.',
         precio: 15.65,
-        imagen: 'fas fa-lock',
+        imagen: 'assets/bloqueo de giro.jpg',
         especificaciones: [
             'Sistema "turn lock"',
             'Para bastidores de tráiler',
@@ -115,7 +124,7 @@ const productos = [
         nombre: 'PATÍN DE APOYO',
         descripcion: 'Patín de apoyo robusto para tráileres (landing gear), proporciona estabilidad al remolque.',
         precio: 191.30,
-        imagen: 'fas fa-anchor',
+        imagen: 'assets/patin de apoyo.jpg',
         especificaciones: [
             'Tipo: Landing gear',
             'Construcción resistente',
@@ -131,7 +140,7 @@ const productos = [
         nombre: 'EJE ALEMÁN 12 T',
         descripcion: 'Eje tipo alemán de 12 toneladas, ideal para quienes buscan precisión europea en el sistema de suspensión.',
         precio: 695.65,
-        imagen: 'fas fa-minus',
+        imagen: 'assets/eje aleman 12t.jpg',
         especificaciones: [
             'Longitud de vía: 1840 mm',
             'Rodamiento Interior: 33213',
@@ -149,7 +158,7 @@ const productos = [
         nombre: 'EJE ALEMÁN 14 T',
         descripcion: 'Eje tipo alemán de 14 toneladas, preparado para cargas pesadas con robustos rodamientos.',
         precio: 695.65,
-        imagen: 'fas fa-minus',
+        imagen: 'assets/eje aleman 14t.jpg',
         especificaciones: [
             'Longitud de vía: 1840 mm',
             'Rodamiento Interior: 33215',
@@ -167,7 +176,7 @@ const productos = [
         nombre: 'KING PIN ATORNILLADO 2″',
         descripcion: 'Diseñado para garantizar conexión segura y duradera entre el remolque y la tractora.',
         precio: 36.78,
-        imagen: 'fas fa-bolt',
+        imagen: 'assets/bloqueo de giro.jpg',
         especificaciones: [
             'Tipo: Atornillado (bolt-in)',
             'Tamaño: 2″',
@@ -185,7 +194,7 @@ const productos = [
         nombre: 'ARCOS CROMADOS',
         descripcion: 'Aros cromados capaces de soportar hasta 3.350 kg por rueda con acabado espejo.',
         precio: 173.91,
-        imagen: 'fas fa-circle-notch',
+        imagen: 'assets/arcos cromados.jpeg',
         especificaciones: [
             'Diámetro de agujeros: 26 mm',
             'Carga máxima: 3.350 kg (7.400 lb)',
@@ -203,7 +212,7 @@ const productos = [
         nombre: 'SUSPENSIÓN DE EJES MECÁNICA (2 EJES)',
         descripcion: 'Sistema completo de suspensión mecánica para 2 ejes con ballestas y componentes heavy-duty.',
         precio: 1086.95,
-        imagen: 'fas fa-cogs',
+        imagen: 'assets/suspension de ejes mecanica.jpeg',
         especificaciones: [
             'Compatibilidad: muñones de 5″ y 6″',
             'Paquete de ballestas: 10 hojas por lado',
@@ -221,7 +230,7 @@ const productos = [
         nombre: 'SUSPENSIÓN DE EJES MECÁNICA (3 EJES)',
         descripcion: 'Sistema completo de suspensión mecánica para 3 ejes con ballestas y componentes heavy-duty.',
         precio: 1434.95,
-        imagen: 'fas fa-cogs',
+        imagen: 'assets/suspension de ejes mecanica.jpeg',
         especificaciones: [
             'Compatibilidad: muñones de 5″ y 6″',
             'Paquete de ballestas: 10 hojas por lado',

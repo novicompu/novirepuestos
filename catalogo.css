@@ -59,8 +59,8 @@
 /* Precio del producto */
 .producto-precio {
     text-align: center;
-    margin: 1.5rem 0;
-    padding: 1rem;
+    margin: 1rem 0;
+    padding: 0.75rem;
     background: var(--light-bg);
     border-radius: var(--border-radius);
 }
@@ -73,18 +73,19 @@
 }
 
 .precio-valor {
-    display: block;
-    font-size: 2rem;
+    font-size: 1.75rem;
     font-weight: 800;
     color: var(--primary-color);
-    margin-bottom: 0.25rem;
+    line-height: 1.2;
 }
 
 .precio-nota {
-    display: block;
-    font-size: 0.8rem;
+    display: inline;
+    font-size: 0.75rem;
     color: var(--text-light);
     font-style: italic;
+    font-weight: 400;
+    margin-left: 0.35rem;
 }
 
 /* Nota de precios */
@@ -195,15 +196,22 @@
     gap: 1.5rem;
 }
 
-.modal-icon {
-    width: 80px;
-    height: 80px;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
+.modal-imagen {
+    width: 120px;
+    height: 120px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2.5rem;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.modal-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 .modal-header h2 {
@@ -365,3 +373,244 @@
     background-size: 1000px 100%;
     animation: shimmer 2s infinite;
 }
+
+/* Estilos para imagen clickeable */
+.imagen-clickeable {
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.imagen-clickeable:hover {
+    transform: scale(1.05);
+}
+
+.imagen-zoom-hint {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(38, 49, 70, 0.8);
+    color: white;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.imagen-clickeable:hover .imagen-zoom-hint {
+    opacity: 1;
+}
+
+/* Lightbox para imagen completa */
+.imagen-lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100000 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    padding: 2rem;
+}
+
+.imagen-lightbox.active {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.lightbox-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+}
+
+.lightbox-contenido,
+.lightbox-content {
+    position: relative;
+    z-index: 1;
+    max-width: 90vw;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.lightbox-contenido img,
+.lightbox-content img {
+    max-width: 90vw;
+    max-height: 80vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    display: block;
+}
+
+.lightbox-close {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.3);
+    border: 2px solid white;
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    line-height: 1;
+    z-index: 100001;
+}
+
+.lightbox-close:hover {
+    background: var(--accent-color);
+    color: var(--primary-color);
+    transform: rotate(90deg);
+    border-color: var(--accent-color);
+}
+
+.lightbox-caption {
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    margin-top: 1rem;
+    max-width: 90%;
+}
+
+/* Responsive para lightbox */
+@media (max-width: 768px) {
+    .imagen-lightbox {
+        padding: 1rem;
+    }
+    
+    .lightbox-contenido img,
+    .lightbox-content img {
+        max-height: 70vh;
+    }
+    
+    .lightbox-close {
+        top: -40px;
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
+    }
+    
+    .lightbox-caption {
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+    }
+}
+
+/* Estilos para galería de imágenes en modal */
+.modal-galeria {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modal-galeria .modal-imagen {
+    margin: 0 auto;
+}
+
+/* Indicadores en las tarjetas de productos */
+.producto-imagen-container {
+    position: relative;
+}
+
+.card-galeria-indicadores {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+}
+
+.card-indicador {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(38, 49, 70, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.card-indicador.active {
+    background: var(--primary-color);
+    width: 10px;
+    height: 10px;
+}
+
+.card-indicador:hover {
+    background: var(--accent-color);
+    transform: scale(1.2);
+}
+
+.galeria-indicadores {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.indicador {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.indicador.active {
+    background: var(--accent-color);
+    width: 12px;
+    height: 12px;
+}
+
+.indicador:hover {
+    background: rgba(255, 255, 255, 0.8);
+}
+
+/* Responsive para galería */
+@media (max-width: 768px) {
+    .card-galeria-indicadores {
+        gap: 0.4rem;
+    }
+    
+    .card-indicador {
+        width: 7px;
+        height: 7px;
+    }
+    
+    .card-indicador.active {
+        width: 9px;
+        height: 9px;
+    }
+}
+
