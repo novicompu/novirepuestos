@@ -1,6 +1,12 @@
 /**
- * Cloudflare Pages Function para manejar el formulario de contacto
+ * Cloudflare Pages Function con Resend
  * Ruta: /api/contact
+ * 
+ * CONFIGURACIÓN:
+ * 1. Crear cuenta en https://resend.com (GRATIS - 100 emails/día)
+ * 2. Obtener API Key
+ * 3. Agregar variable de entorno en Cloudflare Pages:
+ *    RESEND_API_KEY = tu_api_key
  */
 
 export async function onRequestPost(context) {
@@ -13,7 +19,7 @@ export async function onRequestPost(context) {
   try {
     const formData = await context.request.json();
     
-    // Validar honeypot (protección anti-spam)
+    // Validar honeypot
     if (formData.honeypot) {
       return new Response(JSON.stringify({ error: 'Spam detectado' }), {
         status: 400,
@@ -21,7 +27,7 @@ export async function onRequestPost(context) {
       });
     }
 
-    // Validar campos requeridos
+    // Validar campos
     if (!formData.name || !formData.email || !formData.phone || !formData.message) {
       return new Response(JSON.stringify({ error: 'Faltan campos requeridos' }), {
         status: 400,
@@ -29,7 +35,7 @@ export async function onRequestPost(context) {
       });
     }
 
-    // Crear contenido HTML del correo
+    // HTML del correo
     const htmlEmailContent = `
       <!DOCTYPE html>
       <html>
@@ -40,7 +46,7 @@ export async function onRequestPost(context) {
           .header { background: linear-gradient(135deg, #eec92d 0%, #cf812c 100%); color: white; padding: 20px; text-align: center; border-radius: 5px 5px 0 0; }
           .content { background: #f9f9f9; padding: 20px; border-radius: 0 0 5px 5px; }
           .field { margin-bottom: 15px; padding: 10px; background: white; border-radius: 3px; }
-          .label { font-weight: bold; color: #cf812c; margin-bottom: 5px; }
+          .label { font-weight: bold; color: #cf812c; }
           .value { margin-top: 5px; color: #333; }
           .footer { text-align: center; margin-top: 20px; color: #777; font-size: 12px; }
         </style>
@@ -62,7 +68,7 @@ export async function onRequestPost(context) {
             </div>
             <div class="field">
               <div class="label">📱 Teléfono:</div>
-              <div class="value"><a href="tel:${formData.phone}">${formData.phone}</a></div>
+              <div class="value">${formData.phone}</div>
             </div>
             <div class="field">
               <div class="label">📋 Asunto:</div>
@@ -74,71 +80,47 @@ export async function onRequestPost(context) {
             </div>
             <div class="field">
               <div class="label">🕐 Fecha:</div>
-              <div class="value">${new Date(formData.timestamp).toLocaleString('es-EC', { timeZone: 'America/Guayaquil' })}</div>
+              <div class="value">${new Date(formData.timestamp).toLocaleString('es-EC')}</div>
             </div>
           </div>
           <div class="footer">
-            <p>Este correo fue generado automáticamente desde el formulario de contacto web</p>
-            <p style="color: #cf812c; font-weight: bold;">NoviRepuestos - Repuestos para Carga Pesada</p>
+            <p>Este correo fue generado desde el formulario web de NoviRepuestos</p>
           </div>
         </div>
       </body>
       </html>
     `;
 
-    // Obtener API Key de SendGrid desde variables de entorno
-    const SENDGRID_API_KEY = context.env.SENDGRID_API_KEY;
+    // Enviar con Resend
+    const RESEND_API_KEY = context.env.RESEND_API_KEY;
     
-    if (!SENDGRID_API_KEY) {
-      throw new Error('SENDGRID_API_KEY no configurada en variables de entorno');
+    if (!RESEND_API_KEY) {
+      throw new Error('RESEND_API_KEY no configurada');
     }
 
-    // Correos de los asesores
-    const recipients = [
-      { email: 'plataforma1@novirepuestos.com', name: 'Asesor 1 - Emilio' },
-      { email: 'plataforma2@novirepuestos.com', name: 'Asesor 2 - Benjamín' },
-      { email: 'jbermeo@novicompu.com', name: 'Julio Bermeo' }
-    ];
-
-    // Enviar con SendGrid API v3
-    const response = await fetch('https://api.sendgrid.com/v3/mail/send', {
+    const response = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${SENDGRID_API_KEY}`,
+        'Authorization': `Bearer ${RESEND_API_KEY}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        personalizations: [
-          {
-            to: recipients,
-            subject: `[Consulta Web] ${formData.subject || 'Nueva solicitud de ' + formData.name}`
-          }
+        from: 'NoviRepuestos <onboarding@resend.dev>', // Cambiar cuando verifiques tu dominio
+        to: [
+          'plataforma1@novirepuestos.com',
+          'plataforma2@novirepuestos.com',
+          'jbermeo@novicompu.com'
         ],
-        from: {
-          email: 'info@novirepuestos.com',
-          name: 'NoviRepuestos - Formulario Web'
-        },
-        reply_to: {
-          email: formData.email,
-          name: formData.name
-        },
-        content: [
-          {
-            type: 'text/html',
-            value: htmlEmailContent
-          }
-        ]
+        reply_to: formData.email,
+        subject: `[Consulta Web] ${formData.subject || 'Nueva solicitud de ' + formData.name}`,
+        html: htmlEmailContent
       })
     });
 
-    // Verificar respuesta de SendGrid
     if (!response.ok) {
-      const errorText = await response.text();
-      console.error('Error de SendGrid:', response.status, errorText);
-      throw new Error(`SendGrid error: ${response.status} - ${errorText}`);
+      const error = await response.text();
+      throw new Error(`Resend error: ${error}`);
     }
-
-    console.log('✅ Correo enviado exitosamente a todos los destinatarios');
 
     return new Response(JSON.stringify({ 
       success: true, 
@@ -160,7 +142,6 @@ export async function onRequestPost(context) {
   }
 }
 
-// Manejar OPTIONS para CORS
 export async function onRequestOptions() {
   return new Response(null, {
     headers: {
