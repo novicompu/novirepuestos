@@ -1,0 +1,82 @@
+/* Ajustes adicionales para mejorar visibilidad del header */
+
+/* Agregar estos estilos al archivo styles.css si es necesario */
+
+/* Alternativa 1: Header con fondo más sólido y logos más grandes */
+.header-alt1 {
+    background: linear-gradient(to right, 
+        #ffd93d 0%, 
+        #eec92d 30%, 
+        #cf812c 70%, 
+        #a86320 100%);
+    padding: 1rem 0;
+}
+
+.logo-alt1 {
+    background: white;
+    padding: 0.6rem 1.8rem;
+    border-radius: 50px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.logo-text-alt1,
+.logo-nr-alt1 {
+    height: 55px;
+}
+
+/* Alternativa 2: Con separador entre logos */
+.logo-alt2::after {
+    content: '';
+    width: 2px;
+    height: 40px;
+    background: linear-gradient(to bottom, 
+        transparent, 
+        var(--secondary-color), 
+        transparent);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Alternativa 3: Con efecto de brillo en el header */
+.header-alt3::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    animation: shine 3s infinite;
+}
+
+@keyframes shine {
+    0% { left: -100%; }
+    50% { left: 100%; }
+    100% { left: 100%; }
+}
+
+/* Mejoras para el contraste de navegación */
+.nav-link-enhanced {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(207, 129, 44, 0.3);
+}
+
+.nav-link-enhanced:hover {
+    background: white;
+    border-color: var(--secondary-color);
+    color: var(--secondary-color);
+}
+
+.nav-link-enhanced.active {
+    background: white;
+    border-color: var(--secondary-color);
+    color: var(--secondary-color);
+    font-weight: 800;
+}

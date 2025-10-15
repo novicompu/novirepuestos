@@ -7,7 +7,25 @@ document.addEventListener('DOMContentLoaded', function() {
     initFormHandling();
     initAnimations();
     initMobileMenu();
+    initFAQ();
+    initHeroSlider();
+    initContactoTabs();
 });
+
+// Hero Slider
+function initHeroSlider() {
+    const slides = document.querySelectorAll('.hero-slide');
+    let currentSlide = 0;
+
+    function nextSlide() {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add('active');
+    }
+
+    // Cambiar imagen cada 5 segundos
+    setInterval(nextSlide, 5000);
+}
 
 // Navegación y scroll activo
 function initNavigation() {
@@ -88,11 +106,11 @@ function initSmoothScrolling() {
                 });
                 
                 // Cerrar menú móvil si está abierto
-                const navMenu = document.querySelector('.nav-menu');
+                const nav = document.querySelector('.nav');
                 const navToggle = document.querySelector('.nav-toggle');
                 
-                if (navMenu.classList.contains('active')) {
-                    navMenu.classList.remove('active');
+                if (nav && nav.classList.contains('active')) {
+                    nav.classList.remove('active');
                     navToggle.classList.remove('active');
                 }
             }
@@ -103,11 +121,11 @@ function initSmoothScrolling() {
 // Menú móvil
 function initMobileMenu() {
     const navToggle = document.querySelector('.nav-toggle');
-    const navMenu = document.querySelector('.nav-menu');
+    const nav = document.querySelector('.nav');
     
-    if (navToggle && navMenu) {
+    if (navToggle && nav) {
         navToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
+            nav.classList.toggle('active');
             navToggle.classList.toggle('active');
             
             // Animar las líneas del hamburger
@@ -125,8 +143,8 @@ function initMobileMenu() {
         
         // Cerrar menú al hacer clic fuera
         document.addEventListener('click', (e) => {
-            if (!navToggle.contains(e.target) && !navMenu.contains(e.target)) {
-                navMenu.classList.remove('active');
+            if (!navToggle.contains(e.target) && !nav.contains(e.target)) {
+                nav.classList.remove('active');
                 navToggle.classList.remove('active');
                 
                 const spans = navToggle.querySelectorAll('span');
@@ -134,6 +152,20 @@ function initMobileMenu() {
                 spans[1].style.opacity = '1';
                 spans[2].style.transform = 'none';
             }
+        });
+        
+        // Cerrar menú al hacer clic en un link
+        const navLinks = nav.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('active');
+                navToggle.classList.remove('active');
+                
+                const spans = navToggle.querySelectorAll('span');
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            });
         });
     }
 }
@@ -377,3 +409,53 @@ function loadSavedTheme() {
 
 // Llamar al cargar la página
 loadSavedTheme();
+
+// Inicializar FAQ
+function initFAQ() {
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        
+        question.addEventListener('click', () => {
+            // Cerrar otros items abiertos
+            faqItems.forEach(otherItem => {
+                if (otherItem !== item && otherItem.classList.contains('active')) {
+                    otherItem.classList.remove('active');
+                }
+            });
+            
+            // Toggle del item clickeado
+            item.classList.toggle('active');
+        });
+    });
+}
+
+// Tabs de contacto para mobile
+function initContactoTabs() {
+    const tabButtons = document.querySelectorAll('.contacto-tab-btn');
+    const panels = document.querySelectorAll('.contacto-panel');
+    
+    if (tabButtons.length === 0) return;
+    
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const targetTab = button.getAttribute('data-tab');
+            
+            // Remover active de todos los botones
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            
+            // Agregar active al botón clickeado
+            button.classList.add('active');
+            
+            // Ocultar todos los paneles
+            panels.forEach(panel => panel.classList.remove('active'));
+            
+            // Mostrar el panel correspondiente
+            const targetPanel = document.querySelector(`[data-panel="${targetTab}"]`);
+            if (targetPanel) {
+                targetPanel.classList.add('active');
+            }
+        });
+    });
+}

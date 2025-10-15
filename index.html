@@ -11,20 +11,22 @@
 <body>
     <!-- Header -->
     <header class="header">
-        <div class="container">
+        <div class="container header-container">
             <div class="logo">
-                <img src="assets/NOVI REPUESTOS B.jpg" alt="NoviRepuestos" class="logo-img">
+                <img src="assets/NR LOGO TRANSP.png" alt="NoviRepuestos" class="logo-img">
             </div>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <nav class="nav">
-                <button class="nav-toggle" aria-label="Toggle navigation">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
                 <ul class="nav-menu">
                     <li><a href="#inicio" class="nav-link active">Inicio</a></li>
                     <li><a href="#nosotros" class="nav-link">Nosotros</a></li>
                     <li><a href="#catalogo" class="nav-link">Catálogo</a></li>
+                    <li><a href="#ventajas" class="nav-link">Ventajas</a></li>
+                    <li><a href="#faq" class="nav-link">FAQ</a></li>
                     <li><a href="#contacto" class="nav-link">Contacto</a></li>
                 </ul>
             </nav>
@@ -33,17 +35,27 @@
 
     <!-- Hero Section -->
     <section id="inicio" class="hero">
+        <div class="hero-slider">
+            <div class="hero-slide active" style="background-image: url('assets/edw1.png');"></div>
+            <div class="hero-slide" style="background-image: url('assets/edw2.png');"></div>
+            <div class="hero-slide" style="background-image: url('assets/edw3.png');"></div>
+        </div>
+        <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h2>Repuestos y Plataformas para Carga Pesada</h2>
-            <p>Tu socio confiable en el transporte de carga pesada. Ofrecemos los mejores repuestos, plataformas y accesorios para mantener tu flota en movimiento.</p>
+            <h2>Repuestos para carga pesada que mantienen tu flota en marcha</h2>
+            <p>Ejes, amortiguadores, aros y más — componentes certificados para trailers, con atención experta y despacho nacional.</p>
             <div class="hero-buttons">
                 <a href="#catalogo" class="btn btn-primary">
                     <i class="fas fa-shopping-cart"></i>
-                    Ver Catálogo
+                    Ver catálogo completo
                 </a>
                 <a href="#contacto" class="btn btn-secondary">
-                    <i class="fas fa-phone"></i>
-                    Contáctanos
+                    <i class="fas fa-file-invoice-dollar"></i>
+                    Solicita tu cotización
+                </a>
+                <a href="https://api.whatsapp.com/send/?phone=%2B593984062784&text=Hola,%20necesito%20información%20sobre%20repuestos&app_absent=0" target="_blank" class="btn btn-secondary">
+                    <i class="fab fa-whatsapp"></i>
+                    WhatsApp
                 </a>
             </div>
         </div>
@@ -53,11 +65,15 @@
     <!-- Nosotros Section with Tabs -->
     <section id="nosotros" class="nosotros">
         <div class="container">
-            <h2 class="section-title">Conoce NoviRepuestos</h2>
+            <h2 class="section-title">Quiénes somos</h2>
             
             <div class="tabs-container">
                 <div class="tabs">
-                    <button class="tab-button active" data-tab="mision">
+                    <button class="tab-button active" data-tab="historia">
+                        <i class="fas fa-book"></i>
+                        Historia
+                    </button>
+                    <button class="tab-button" data-tab="mision">
                         <i class="fas fa-target"></i>
                         Misión
                     </button>
@@ -69,79 +85,78 @@
                         <i class="fas fa-heart"></i>
                         Valores
                     </button>
+                    <button class="tab-button" data-tab="equipo">
+                        <i class="fas fa-users"></i>
+                        Equipo
+                    </button>
+                    <button class="tab-button" data-tab="cobertura">
+                        <i class="fas fa-map-marked-alt"></i>
+                        Cobertura
+                    </button>
                 </div>
 
                 <div class="tab-content">
-                    <div id="mision" class="tab-panel active">
+                    <div id="historia" class="tab-panel active">
                         <div class="panel-content">
-                            <h3>Nuestra Misión</h3>
-                            <p>Proveer repuestos de alta calidad y plataformas especializadas para el transporte de carga pesada, garantizando la continuidad operativa de nuestros clientes a través de productos confiables, servicio personalizado y soporte técnico especializado.</p>
-                            <div class="mission-points">
-                                <div class="point">
-                                    <i class="fas fa-check-circle"></i>
-                                    <span>Productos de alta calidad certificados</span>
-                                </div>
-                                <div class="point">
-                                    <i class="fas fa-check-circle"></i>
-                                    <span>Servicio técnico especializado</span>
-                                </div>
-                                <div class="point">
-                                    <i class="fas fa-check-circle"></i>
-                                    <span>Soporte continuo a nuestros clientes</span>
-                                </div>
-                            </div>
+                            <h3>Nuestra Historia</h3>
+                            <p>En 2022 nació NoviRepuestos con la visión de cubrir las necesidades de las empresas de transporte pesado en Ecuador.</p>
+                            <p>Desde entonces, hemos crecido con base en la calidad, el apoyo técnico especializado y el compromiso con nuestros clientes.</p>
+                        </div>
+                    </div>
+
+                    <div id="mision" class="tab-panel">
+                        <div class="panel-content">
+                            <h3>Misión</h3>
+                            <p>Suministrar repuestos y plataformas especializadas para carga pesada con estándares internacionales, garantizando la operatividad continua de tu flota mediante productos confiables, asesoría técnica y atención personalizada.</p>
                         </div>
                     </div>
 
                     <div id="vision" class="tab-panel">
                         <div class="panel-content">
-                            <h3>Nuestra Visión</h3>
-                            <p>Ser la empresa líder en el mercado nacional de repuestos y plataformas para carga pesada, reconocida por la excelencia en nuestros productos, innovación tecnológica y compromiso con la satisfacción del cliente.</p>
-                            <div class="vision-goals">
-                                <div class="goal">
-                                    <i class="fas fa-star"></i>
-                                    <h4>Liderazgo</h4>
-                                    <p>Posicionarnos como referente en el sector</p>
-                                </div>
-                                <div class="goal">
-                                    <i class="fas fa-lightbulb"></i>
-                                    <h4>Innovación</h4>
-                                    <p>Incorporar las últimas tecnologías</p>
-                                </div>
-                                <div class="goal">
-                                    <i class="fas fa-handshake"></i>
-                                    <h4>Compromiso</h4>
-                                    <p>Satisfacción total del cliente</p>
-                                </div>
-                            </div>
+                            <h3>Visión</h3>
+                            <p>Ser la empresa líder en repuestos para transporte pesado a nivel nacional, reconocida por innovación, calidad y excelencia en el servicio.</p>
                         </div>
                     </div>
 
                     <div id="valores" class="tab-panel">
                         <div class="panel-content">
-                            <h3>Nuestros Valores</h3>
+                            <h3>Valores</h3>
                             <div class="values-grid">
                                 <div class="value-card">
-                                    <i class="fas fa-shield-alt"></i>
+                                    <i class="fas fa-certificate"></i>
                                     <h4>Calidad</h4>
-                                    <p>Productos que cumplen los más altos estándares</p>
+                                    <p>Componentes certificados</p>
                                 </div>
                                 <div class="value-card">
-                                    <i class="fas fa-users"></i>
+                                    <i class="fas fa-handshake"></i>
                                     <h4>Confianza</h4>
-                                    <p>Relaciones duraderas basadas en la transparencia</p>
+                                    <p>Transparencia en cada venta</p>
                                 </div>
                                 <div class="value-card">
-                                    <i class="fas fa-cogs"></i>
+                                    <i class="fas fa-user-graduate"></i>
                                     <h4>Experiencia</h4>
-                                    <p>Conocimiento especializado en el sector</p>
+                                    <p>Asesoría respaldada por expertos</p>
                                 </div>
                                 <div class="value-card">
-                                    <i class="fas fa-clock"></i>
+                                    <i class="fas fa-shipping-fast"></i>
                                     <h4>Eficiencia</h4>
-                                    <p>Respuesta rápida y soluciones oportunas</p>
+                                    <p>Entregas oportunas y ágiles</p>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+
+                    <div id="equipo" class="tab-panel">
+                        <div class="panel-content">
+                            <h3>Nuestro Equipo</h3>
+                            <p>Contamos con técnicos especializados en asesoría e importación de ejes, suspensión y plataformas, disponibles para resolver cualquier necesidad o inconveniente con tu maquinaria y accesorios.</p>
+                        </div>
+                    </div>
+
+                    <div id="cobertura" class="tab-panel">
+                        <div class="panel-content">
+                            <h3>Cobertura</h3>
+                            <p>Enviamos a todo Ecuador, con aliados logísticos estratégicos para plazos confiables.</p>
                         </div>
                     </div>
                 </div>
@@ -162,58 +177,317 @@
         </div>
     </section>
 
+    <!-- Por qué elegirnos Section -->
+    <section id="ventajas" class="ventajas">
+        <div class="container">
+            <h2 class="section-title">¿Por qué elegir NoviRepuestos?</h2>
+            <p class="section-subtitle">Ventajas que nos hacen tu mejor opción</p>
+            
+            <div class="ventajas-grid">
+                <div class="ventaja-card">
+                    <div class="ventaja-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>Garantía de calidad</h3>
+                    <p>Todos nuestros repuestos tienen certificado de origen</p>
+                </div>
+                
+                <div class="ventaja-card">
+                    <div class="ventaja-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3>Asesoría experta</h3>
+                    <p>Nuestro equipo técnico te ayuda a elegir lo adecuado</p>
+                </div>
+                
+                <div class="ventaja-card">
+                    <div class="ventaja-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <h3>Cobertura nacional</h3>
+                    <p>Envíos a todas las provincias del país</p>
+                </div>
+                
+                <div class="ventaja-card">
+                    <div class="ventaja-icon">
+                        <i class="fas fa-boxes"></i>
+                    </div>
+                    <h3>Disponibilidad</h3>
+                    <p>Inventario actualizado para entregas rápidas</p>
+                </div>
+                
+                <div class="ventaja-card">
+                    <div class="ventaja-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <h3>Precios competitivos</h3>
+                    <p>Negociaciones directas con fabricantes</p>
+                </div>
+                
+                <div class="ventaja-card">
+                    <div class="ventaja-icon">
+                        <i class="fas fa-undo-alt"></i>
+                    </div>
+                    <h3>Política clara de devolución</h3>
+                    <p>Cambios fáciles en caso de incompatibilidad</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proceso Section -->
+    <section id="proceso" class="proceso">
+        <div class="container">
+            <h2 class="section-title">Cómo trabajamos</h2>
+            <p class="section-subtitle">Nuestro proceso de atención</p>
+            
+            <div class="proceso-flow">
+                <div class="flow-step">
+                    <div class="flow-number">1</div>
+                    <div class="flow-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Envíanos tus requerimientos</h3>
+                </div>
+                
+                <div class="flow-connector">
+                    <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+                        <path d="M 0,50 Q 50,0 100,50" stroke="url(#gradient1)" stroke-width="3" fill="none"/>
+                        <defs>
+                            <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:#eec92d;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#cf812c;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                
+                <div class="flow-step">
+                    <div class="flow-number">2</div>
+                    <div class="flow-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Analizamos compatibilidad y te asesoramos</h3>
+                </div>
+                
+                <div class="flow-connector">
+                    <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+                        <path d="M 0,50 Q 50,100 100,50" stroke="url(#gradient2)" stroke-width="3" fill="none"/>
+                        <defs>
+                            <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:#eec92d;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#cf812c;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                
+                <div class="flow-step">
+                    <div class="flow-number">3</div>
+                    <div class="flow-icon">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                    </div>
+                    <h3>Cotizamos y confirmas tu pedido</h3>
+                </div>
+                
+                <div class="flow-connector">
+                    <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+                        <path d="M 0,50 Q 50,0 100,50" stroke="url(#gradient3)" stroke-width="3" fill="none"/>
+                        <defs>
+                            <linearGradient id="gradient3" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:#eec92d;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#cf812c;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                
+                <div class="flow-step">
+                    <div class="flow-number">4</div>
+                    <div class="flow-icon">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <h3>Empaquetamos y despachamos con logística confiable</h3>
+                </div>
+                
+                <div class="flow-connector">
+                    <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+                        <path d="M 0,50 Q 50,100 100,50" stroke="url(#gradient4)" stroke-width="3" fill="none"/>
+                        <defs>
+                            <linearGradient id="gradient4" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:#eec92d;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#cf812c;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                
+                <div class="flow-step">
+                    <div class="flow-number">5</div>
+                    <div class="flow-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>Te damos seguimiento postventa</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <h2 class="section-title">Preguntas Frecuentes</h2>
+            <p class="section-subtitle">Resolvemos tus dudas</p>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <i class="fas fa-truck"></i>
+                        <h3>¿Hacen envíos a todo Ecuador?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sí, contamos con alianzas logísticas que cubren todas las provincias. Trabajamos con Servientrega, Tramaco o te podemos enviar con tu Courier de confianza.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>¿Qué garantía ofrecen?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Todos nuestros repuestos cuentan con garantía contra defectos de fábrica.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <i class="fab fa-whatsapp"></i>
+                        <h3>¿Puedo solicitar cotización por WhatsApp?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Claro, puedes enviar foto o número de serie, como también número de parte del repuesto por WhatsApp y te ayudamos.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <i class="fas fa-warehouse"></i>
+                        <h3>¿Aceptan pedidos al por mayor o flotas?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sí, ofrecemos precios especiales para flotas grandes y contratos de mantenimiento.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
     <section id="contacto" class="contacto">
         <div class="container">
-            <h2 class="section-title">Contáctanos</h2>
+            <h2 class="section-title">Contáctanos ahora</h2>
+            <p class="section-subtitle">¿Tienes dudas o necesitas un repuesto especial?<br>Escríbenos por WhatsApp o rellena el formulario</p>
+            
+            <!-- Botones de alternancia solo visibles en mobile -->
+            <div class="contacto-tabs">
+                <button class="contacto-tab-btn active" data-tab="info">
+                    <i class="fas fa-address-book"></i>
+                    Contactos
+                </button>
+                <button class="contacto-tab-btn" data-tab="form">
+                    <i class="fas fa-envelope"></i>
+                    Formulario
+                </button>
+            </div>
+            
             <div class="contacto-content">
-                <div class="contacto-info">
+                <div class="contacto-info contacto-panel active" data-panel="info">
                     <h3>Información de Contacto</h3>
-                    <div class="info-item">
-                        <i class="fas fa-phone"></i>
-                        <a href="https://api.whatsapp.com/send/?phone=%2B593984062784&text&app_absent=0" target="_blank" class="contact-link">0984062784</a>
+                    
+                    <div class="asesores-grid">
+                        <div class="asesor-card">
+                            <div class="asesor-header">
+                                <div class="asesor-avatar">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div>
+                                    <h4>Asesor 1</h4>
+                                    <p class="asesor-name">Emilio Casares</p>
+                                </div>
+                            </div>
+                            <div class="asesor-contacts">
+                                <a href="https://api.whatsapp.com/send/?phone=%2B593984062784&text=Hola,%20necesito%20información%20sobre%20repuestos&app_absent=0" target="_blank" class="contact-item whatsapp-item">
+                                    <i class="fab fa-whatsapp"></i>
+                                    <span>0984 062 784</span>
+                                </a>
+                                <a href="mailto:plataforma1@novirepuestos.com" class="contact-item email-item">
+                                    <i class="fas fa-envelope"></i>
+                                    <span>plataforma1@novirepuestos.com</span>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="asesor-card">
+                            <div class="asesor-header">
+                                <div class="asesor-avatar">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div>
+                                    <h4>Asesor 2</h4>
+                                    <p class="asesor-name">Benjamín Lozada</p>
+                                </div>
+                            </div>
+                            <div class="asesor-contacts">
+                                <a href="https://api.whatsapp.com/send/?phone=%2B593987523946&text=Hola,%20necesito%20información%20sobre%20repuestos&app_absent=0" target="_blank" class="contact-item whatsapp-item">
+                                    <i class="fab fa-whatsapp"></i>
+                                    <span>0987 523 946</span>
+                                </a>
+                                <a href="mailto:plataforma2@novirepuestos.com" class="contact-item email-item">
+                                    <i class="fas fa-envelope"></i>
+                                    <span>plataforma2@novirepuestos.com</span>
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="info-item">
-                        <i class="fas fa-phone"></i>
-                        <a href="https://api.whatsapp.com/send/?phone=%2B593987523946&text&app_absent=0" target="_blank" class="contact-link">0987523946</a>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-envelope"></i>
-                        <a href="mailto:Plataforma1@novirepuestos.com" class="contact-link">Plataforma1@novirepuestos.com</a>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-envelope"></i>
-                        <a href="mailto:Plataforma2@novirepuestos.com" class="contact-link">Plataforma2@novirepuestos.com</a>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Dirección de la empresa</span>
-                    </div>
-                    <div class="info-item">
+                    
+                    <div class="horario-card">
                         <i class="fas fa-clock"></i>
-                        <span>Lun - Vie: 8:00 - 18:00</span>
+                        <div>
+                            <strong>Horario de atención</strong>
+                            <p>Lunes a Viernes de 8:00 a 17:00</p>
+                        </div>
                     </div>
                 </div>
-                <div class="contacto-form">
-                    <h3>Envíanos un mensaje</h3>
+                
+                <div class="contacto-form contacto-panel" data-panel="form">
+                    <h3>Envía tu requerimiento</h3>
                     <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-                        <!-- Campo oculto para Netlify/Cloudflare -->
                         <input type="hidden" name="form-name" value="contact">
-                        
-                        <!-- Honeypot para prevenir spam -->
                         <p style="display: none;">
                             <label>No llenes este campo: <input name="bot-field" /></label>
                         </p>
                         
                         <input type="text" name="name" placeholder="Nombre completo" required>
                         <input type="email" name="email" placeholder="Correo electrónico" required>
-                        <input type="tel" name="phone" placeholder="Teléfono">
+                        <input type="tel" name="phone" placeholder="Teléfono" required>
                         <input type="text" name="subject" placeholder="Asunto" required>
-                        <textarea name="message" placeholder="Mensaje" rows="5" required></textarea>
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fas fa-paper-plane"></i>
-                            Enviar mensaje
-                        </button>
+                        <textarea name="message" placeholder="Describe tu requerimiento" rows="5" required></textarea>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-paper-plane"></i>
+                                Enviar requerimiento
+                            </button>
+                            <a href="https://api.whatsapp.com/send/?phone=%2B593984062784&text=Hola,%20necesito%20información%20sobre%20repuestos&app_absent=0" target="_blank" class="btn btn-whatsapp">
+                                <i class="fab fa-whatsapp"></i>
+                                Hablar con un asesor
+                            </a>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -224,9 +498,10 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-section">
-                    <h3><i class="fas fa-truck"></i> NoviRepuestos</h3>
-                    <p>Tu socio confiable en repuestos y plataformas para carga pesada.</p>
+                <div class="footer-section footer-brand">
+                    <img src="assets/NOVI REPUESTOS B.png" alt="NoviRepuestos" class="footer-logo">
+                    <p>Repuestos para carga pesada que mantienen tu flota en marcha</p>
+                    <p class="footer-description">Ejes, amortiguadores, aros y más — componentes certificados para trailers, con atención experta y despacho nacional.</p>
                 </div>
                 <div class="footer-section">
                     <h4>Enlaces rápidos</h4>
@@ -234,6 +509,8 @@
                         <li><a href="#inicio">Inicio</a></li>
                         <li><a href="#nosotros">Nosotros</a></li>
                         <li><a href="#catalogo">Catálogo</a></li>
+                        <li><a href="#ventajas">Ventajas</a></li>
+                        <li><a href="#faq">FAQ</a></li>
                         <li><a href="#contacto">Contacto</a></li>
                     </ul>
                 </div>

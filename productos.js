@@ -209,11 +209,12 @@ const productos = [
     {
         id: 12,
         categoria: 'suspension',
-        nombre: 'SUSPENSIÓN DE EJES MECÁNICA',
-        descripcion: 'Sistema completo de suspensión mecánica con ballestas y componentes heavy-duty para semirremolques.',
-        precio: 1086.95,
+        nombre: 'SUSPENSIÓN DE EJES MECÁNICA (2 EJES)',
+        descripcion: 'Sistema completo de suspensión mecánica con ballestas y componentes heavy-duty para semirremolques de 2 ejes.',
+        precio: 1050.00,
         imagen: 'assets/suspension de ejes mecanica.jpeg',
         especificaciones: [
+            'Configuración: 2 ejes',
             'Compatibilidad: muñones de 5″ y 6″',
             'Paquete de ballestas: 10 hojas por lado',
             'Hojas principales: 5 hojas de 90 mm × 12 mm',
@@ -222,8 +223,27 @@ const productos = [
             'Acabado: pintura anticorrosiva horneada, durabilidad',
             'Aplicación: semirremolques y plataformas de servicio',
             'Pernos en U y herrajes: grado automotriz, alta resistencia',
-            'Bujes/silentblocks: alta resistencia para reducir vibración y desgaste',
-            '2 EJES: $1,086.95 | 3 EJES: $1,434.95'
+            'Bujes/silentblocks: alta resistencia para reducir vibración y desgaste'
+        ]
+    },
+    {
+        id: 13,
+        categoria: 'suspension',
+        nombre: 'SUSPENSIÓN DE EJES MECÁNICA (3 EJES)',
+        descripcion: 'Sistema completo de suspensión mecánica con ballestas y componentes heavy-duty para semirremolques de 3 ejes.',
+        precio: 1350.00,
+        imagen: 'assets/suspension de ejes mecanica.jpeg',
+        especificaciones: [
+            'Configuración: 3 ejes',
+            'Compatibilidad: muñones de 5″ y 6″',
+            'Paquete de ballestas: 10 hojas por lado',
+            'Hojas principales: 5 hojas de 90 mm × 12 mm',
+            'Estructura: placas y soportes de 8 mm heavy-duty',
+            'Equalizer central: distribuye carga, alta estabilidad',
+            'Acabado: pintura anticorrosiva horneada, durabilidad',
+            'Aplicación: semirremolques y plataformas de servicio',
+            'Pernos en U y herrajes: grado automotriz, alta resistencia',
+            'Bujes/silentblocks: alta resistencia para reducir vibración y desgaste'
         ]
     }
 ];
