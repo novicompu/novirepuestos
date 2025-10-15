@@ -176,7 +176,7 @@ const productos = [
         nombre: 'KING PIN ATORNILLADO 2″',
         descripcion: 'Diseñado para garantizar conexión segura y duradera entre el remolque y la tractora.',
         precio: 36.78,
-        imagen: 'assets/bloqueo de giro.jpg',
+        imagen: 'assets/KING PIN.jpeg',
         especificaciones: [
             'Tipo: Atornillado (bolt-in)',
             'Tamaño: 2″',
