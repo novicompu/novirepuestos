@@ -37,10 +37,49 @@
         
         console.log('✅ Formulario de contacto inicializado');
         
+        // Guardar valores en tiempo real (solución al problema de limpieza)
+        const formValues = {
+            name: '',
+            email: '',
+            phone: '',
+            subject: '',
+            message: ''
+        };
+        
+        // Escuchar cambios en los inputs
+        document.getElementById('contactName')?.addEventListener('input', (e) => {
+            formValues.name = e.target.value;
+            console.log('📝 Name actualizado:', formValues.name);
+        });
+        document.getElementById('contactEmail')?.addEventListener('input', (e) => {
+            formValues.email = e.target.value;
+        });
+        document.getElementById('contactPhone')?.addEventListener('input', (e) => {
+            formValues.phone = e.target.value;
+        });
+        document.getElementById('contactSubject')?.addEventListener('input', (e) => {
+            formValues.subject = e.target.value;
+        });
+        document.getElementById('contactMessage')?.addEventListener('input', (e) => {
+            formValues.message = e.target.value;
+        });
+        
+        // Interceptar el submit del formulario (con capture para ejecutar primero)
         form.addEventListener('submit', async function(e) {
-            e.preventDefault();
+            // PRIMERO: Capturar valores ANTES de preventDefault
+            const instantValues = {
+                name: document.getElementById('contactName')?.value,
+                email: document.getElementById('contactEmail')?.value,
+                phone: document.getElementById('contactPhone')?.value,
+                subject: document.getElementById('contactSubject')?.value,
+                message: document.getElementById('contactMessage')?.value
+            };
+            console.log('⚡ Valores INSTANTÁNEOS (antes de preventDefault):', instantValues);
             
-            console.log('📤 Procesando envío del formulario...');
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            
+            console.log('📤 Evento submit capturado');
             
             // Deshabilitar el botón de envío
             const submitButton = form.querySelector('button[type="submit"]');
@@ -54,7 +93,7 @@
             submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
             
             // Verificar honeypot (protección anti-spam)
-            const honeypot = form.querySelector('input[name="honeypot"]');
+            const honeypot = document.getElementById('honeypot');
             if (honeypot && honeypot.value) {
                 console.log('🚫 Spam detectado');
                 submitButton.disabled = false;
@@ -62,28 +101,57 @@
                 return;
             }
             
-            // Recopilar datos del formulario usando FormData
-            const formDataObj = new FormData(form);
+            // Obtener valores usando getElementById (más directo y confiable)
+            const nameInput = document.getElementById('contactName');
+            const emailInput = document.getElementById('contactEmail');
+            const phoneInput = document.getElementById('contactPhone');
+            const subjectInput = document.getElementById('contactSubject');
+            const messageInput = document.getElementById('contactMessage');
+            
+            // Debug: Verificar que los elementos existen
+            console.log('🔍 Elementos encontrados:');
+            console.log('  nameInput:', nameInput ? '✓' : '✗');
+            console.log('  emailInput:', emailInput ? '✓' : '✗');
+            console.log('  phoneInput:', phoneInput ? '✓' : '✗');
+            console.log('  subjectInput:', subjectInput ? '✓' : '✗');
+            console.log('  messageInput:', messageInput ? '✓' : '✗');
+            
+            // Debug: Ver valores RAW
+            console.log('🔍 Valores capturados:');
+            console.log('  name =', JSON.stringify(nameInput?.value));
+            console.log('  email =', JSON.stringify(emailInput?.value));
+            console.log('  phone =', JSON.stringify(phoneInput?.value));
+            console.log('  subject =', JSON.stringify(subjectInput?.value));
+            console.log('  message =', JSON.stringify(messageInput?.value));
+            
+            // Usar los valores guardados en tiempo real (más confiable)
             const formData = {
-                name: (formDataObj.get('name') || '').trim(),
-                email: (formDataObj.get('email') || '').trim(),
-                phone: (formDataObj.get('phone') || '').trim(),
-                subject: (formDataObj.get('subject') || '').trim(),
-                message: (formDataObj.get('message') || '').trim(),
+                name: (formValues.name || '').trim(),
+                email: (formValues.email || '').trim(),
+                phone: (formValues.phone || '').trim(),
+                subject: (formValues.subject || '').trim(),
+                message: (formValues.message || '').trim(),
                 timestamp: new Date().toISOString()
             };
             
             // Log para debug
-            console.log('📋 Datos capturados:', formData);
+            console.log('📋 Datos guardados en tiempo real:', formData);
+            console.log('🔄 Comparación con valores del DOM:');
+            console.log('  Real-time name:', formValues.name, 'vs DOM:', instantValues.name);
+            console.log('  Real-time email:', formValues.email, 'vs DOM:', instantValues.email);
             
             // Validación básica en el cliente
             if (!formData.name || !formData.email || !formData.phone || !formData.message) {
                 console.error('❌ Validación falló: campos vacíos');
+                console.error('⚠️  Por favor LLENA el formulario antes de enviarlo');
+                alert('⚠️ Por favor completa todos los campos del formulario antes de enviar.');
                 showMessage(form, 'Por favor completa todos los campos requeridos.', 'error');
                 submitButton.disabled = false;
                 submitButton.innerHTML = originalText;
                 return;
             }
+            
+            console.log('✅ Validación exitosa, todos los campos tienen datos');
             
             try {
                 console.log('🌐 Enviando al servidor...');
@@ -118,7 +186,7 @@
                 submitButton.disabled = false;
                 submitButton.innerHTML = originalText;
             }
-        });
+        }, true); // true = usar capture phase para ejecutar primero
     }
     
     // Inicializar cuando el DOM esté listo

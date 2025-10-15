@@ -467,13 +467,13 @@
                 <div class="contacto-form contacto-panel" data-panel="form">
                     <h3>Envía tu requerimiento</h3>
                     <form id="contactForm" method="POST">
-                        <input type="text" name="honeypot" style="display:none" tabindex="-1" autocomplete="off">
+                        <input type="text" name="honeypot" id="honeypot" style="display:none" tabindex="-1" autocomplete="off">
                         
-                        <input type="text" name="name" placeholder="Nombre completo" required>
-                        <input type="email" name="email" placeholder="Correo electrónico" required>
-                        <input type="tel" name="phone" placeholder="Teléfono" required>
-                        <input type="text" name="subject" placeholder="Asunto" required>
-                        <textarea name="message" placeholder="Describe tu requerimiento" rows="5" required></textarea>
+                        <input type="text" name="name" id="contactName" placeholder="Nombre completo" required>
+                        <input type="email" name="email" id="contactEmail" placeholder="Correo electrónico" required>
+                        <input type="tel" name="phone" id="contactPhone" placeholder="Teléfono" required>
+                        <input type="text" name="subject" id="contactSubject" placeholder="Asunto" required>
+                        <textarea name="message" id="contactMessage" placeholder="Describe tu requerimiento" rows="5" required></textarea>
                         
                         <div class="form-actions">
                             <button type="submit" class="btn btn-primary">
