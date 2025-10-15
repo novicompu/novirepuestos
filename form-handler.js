@@ -1,65 +1,9 @@
 // Manejador del formulario de contacto
-document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('contactForm');
-    
-    if (form) {
-        form.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            // Deshabilitar el botón de envío
-            const submitButton = form.querySelector('button[type="submit"]');
-            const originalText = submitButton.innerHTML;
-            submitButton.disabled = true;
-            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
-            
-            // Verificar honeypot (protección anti-spam)
-            if (form.honeypot.value) {
-                console.log('Spam detectado');
-                return;
-            }
-            
-            // Recopilar datos del formulario
-            const formData = {
-                name: form.name.value,
-                email: form.email.value,
-                phone: form.phone.value,
-                subject: form.subject.value,
-                message: form.message.value,
-                timestamp: new Date().toISOString()
-            };
-            
-            try {
-                // Enviar al Worker de Cloudflare
-                const response = await fetch('/api/contact', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(formData)
-                });
-                
-                const result = await response.json();
-                
-                if (response.ok) {
-                    // Mostrar mensaje de éxito
-                    showMessage('¡Mensaje enviado con éxito! Nos pondremos en contacto contigo pronto.', 'success');
-                    form.reset();
-                } else {
-                    throw new Error(result.error || 'Error al enviar el formulario');
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                showMessage('Hubo un error al enviar el mensaje. Por favor, intenta de nuevo o contáctanos por WhatsApp.', 'error');
-            } finally {
-                // Restaurar el botón
-                submitButton.disabled = false;
-                submitButton.innerHTML = originalText;
-            }
-        });
-    }
+(function() {
+    'use strict';
     
     // Función para mostrar mensajes
-    function showMessage(message, type) {
+    function showMessage(form, message, type) {
         const messageDiv = document.createElement('div');
         messageDiv.className = `form-message form-message-${type}`;
         messageDiv.textContent = message;
@@ -82,4 +26,106 @@ document.addEventListener('DOMContentLoaded', function() {
             setTimeout(() => messageDiv.remove(), 300);
         }, 5000);
     }
-});
+    
+    function initContactForm() {
+        const form = document.getElementById('contactForm');
+        
+        if (!form) {
+            console.warn('Formulario de contacto no encontrado');
+            return;
+        }
+        
+        console.log('✅ Formulario de contacto inicializado');
+        
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            console.log('📤 Procesando envío del formulario...');
+            
+            // Deshabilitar el botón de envío
+            const submitButton = form.querySelector('button[type="submit"]');
+            if (!submitButton) {
+                console.error('❌ Botón de envío no encontrado');
+                return;
+            }
+            
+            const originalText = submitButton.innerHTML;
+            submitButton.disabled = true;
+            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+            
+            // Verificar honeypot (protección anti-spam)
+            const honeypot = form.querySelector('input[name="honeypot"]');
+            if (honeypot && honeypot.value) {
+                console.log('🚫 Spam detectado');
+                submitButton.disabled = false;
+                submitButton.innerHTML = originalText;
+                return;
+            }
+            
+            // Recopilar datos del formulario usando FormData
+            const formDataObj = new FormData(form);
+            const formData = {
+                name: (formDataObj.get('name') || '').trim(),
+                email: (formDataObj.get('email') || '').trim(),
+                phone: (formDataObj.get('phone') || '').trim(),
+                subject: (formDataObj.get('subject') || '').trim(),
+                message: (formDataObj.get('message') || '').trim(),
+                timestamp: new Date().toISOString()
+            };
+            
+            // Log para debug
+            console.log('📋 Datos capturados:', formData);
+            
+            // Validación básica en el cliente
+            if (!formData.name || !formData.email || !formData.phone || !formData.message) {
+                console.error('❌ Validación falló: campos vacíos');
+                showMessage(form, 'Por favor completa todos los campos requeridos.', 'error');
+                submitButton.disabled = false;
+                submitButton.innerHTML = originalText;
+                return;
+            }
+            
+            try {
+                console.log('🌐 Enviando al servidor...');
+                
+                // Enviar al Worker de Cloudflare
+                const response = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                console.log('📡 Respuesta recibida:', response.status);
+                
+                const result = await response.json();
+                console.log('📄 Resultado:', result);
+                
+                if (response.ok) {
+                    // Mostrar mensaje de éxito
+                    console.log('✅ ¡Formulario enviado exitosamente!');
+                    showMessage(form, '¡Mensaje enviado con éxito! Nos pondremos en contacto contigo pronto.', 'success');
+                    form.reset();
+                } else {
+                    throw new Error(result.error || 'Error al enviar el formulario');
+                }
+            } catch (error) {
+                console.error('❌ Error:', error);
+                showMessage(form, 'Hubo un error al enviar el mensaje. Por favor, intenta de nuevo o contáctanos por WhatsApp.', 'error');
+            } finally {
+                // Restaurar el botón
+                submitButton.disabled = false;
+                submitButton.innerHTML = originalText;
+            }
+        });
+    }
+    
+    // Inicializar cuando el DOM esté listo
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initContactForm);
+    } else {
+        // Si el DOM ya está cargado, ejecutar inmediatamente
+        initContactForm();
+    }
+})();
