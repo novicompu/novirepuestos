@@ -89,7 +89,8 @@ export async function onRequestPost(context) {
     // Correos de los asesores
     const recipients = [
       'plataforma1@novirepuestos.com',
-      'plataforma2@novirepuestos.com'
+      'plataforma2@novirepuestos.com',
+      'jbermeo@novicompu.com'
     ];
 
     // Enviar correos usando MailChannels (integrado con Cloudflare)
