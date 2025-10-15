@@ -466,11 +466,8 @@
                 
                 <div class="contacto-form contacto-panel" data-panel="form">
                     <h3>Envía tu requerimiento</h3>
-                    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-                        <input type="hidden" name="form-name" value="contact">
-                        <p style="display: none;">
-                            <label>No llenes este campo: <input name="bot-field" /></label>
-                        </p>
+                    <form id="contactForm" method="POST">
+                        <input type="text" name="honeypot" style="display:none" tabindex="-1" autocomplete="off">
                         
                         <input type="text" name="name" placeholder="Nombre completo" required>
                         <input type="email" name="email" placeholder="Correo electrónico" required>
@@ -531,5 +528,6 @@
     <script src="productos.js"></script>
     <script src="catalogo.js"></script>
     <script src="script.js"></script>
+    <script src="form-handler.js"></script>
 </body>
 </html>

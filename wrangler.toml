@@ -1,0 +1,12 @@
+name = "novirepuestos-contact-worker"
+main = "worker.js"
+compatibility_date = "2024-01-01"
+
+# Configuración de rutas
+routes = [
+  { pattern = "*/api/contact", custom_domain = true }
+]
+
+# Variables de entorno (opcional)
+[vars]
+# Agrega aquí cualquier variable que necesites
