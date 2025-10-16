@@ -116,9 +116,8 @@ export default {
 
       // Enviar correos a ambos asesores usando MailChannels
       const emails = [
-        // 'plataforma1@novirepuestos.com',
-        // 'plataforma2@novirepuestos.com',
-        'jbermeo@novicompu.com'
+        'plataforma1@novirepuestos.com',
+        'plataforma2@novirepuestos.com'
       ];
 
       const emailPromises = emails.map(email => 

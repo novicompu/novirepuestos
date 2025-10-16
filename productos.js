@@ -5,7 +5,7 @@ const productos = [
         categoria: 'plataforma',
         nombre: 'PLATAFORMA 3 EJES',
         descripcion: 'Plataforma especializada para transporte de carga pesada con capacidad de hasta 50 toneladas.',
-        precio: 17391.30,
+        precio: 15122.87,
         imagen: 'assets/plataforma 3 ejes.jpeg',
         imagenes: [
             'assets/plataforma 3 ejes.jpeg',
@@ -39,7 +39,7 @@ const productos = [
         categoria: 'ejes',
         nombre: 'EJE AMERICANO 13 T (5″)',
         descripcion: 'Eje tipo americano de 13 toneladas, con perfil de 127 × 127 mm (5″), robusto y confiable.',
-        precio: 626.08,
+        precio: 544.42,
         imagen: 'assets/eje americano 13t 420x180.jpg',
         especificaciones: [
             'Longitud de vía: 1840 mm',
@@ -57,7 +57,7 @@ const productos = [
         categoria: 'ejes',
         nombre: 'EJE AMERICANO 13 T (6″)',
         descripcion: 'Eje tipo americano de 13 toneladas, con perfil de 150 × 150 mm (6″), diseñado para soporte resistente.',
-        precio: 626.08,
+        precio: 544.42,
         imagen: 'assets/eje americano 13t 420x220.jpg',
         especificaciones: [
             'Longitud de vía: 1840 mm',
@@ -75,7 +75,7 @@ const productos = [
         categoria: 'suspension',
         nombre: 'BALLESTAS',
         descripcion: 'Juego de ballestas para suspensión mecánica de tráiler, proporciona soporte resistente y estabilidad.',
-        precio: 130.43,
+        precio: 113.42,
         imagen: 'assets/ballestas.jpg',
         especificaciones: [
             'Ancho: 90 mm',
@@ -91,7 +91,7 @@ const productos = [
         categoria: 'frenos',
         nombre: 'PULMÓN DOBLE ACCIÓN T3030',
         descripcion: 'Cámara de freno neumática modelo T3030 para sistemas de frenado en remolques.',
-        precio: 21.74,
+        precio: 18.90,
         imagen: 'assets/pulmon doble accion.jpg',
         especificaciones: [
             'Modelo: T3030',
@@ -107,7 +107,7 @@ const productos = [
         categoria: 'accesorios',
         nombre: 'BLOQUEO DE GIRO',
         descripcion: 'Sistema de bloqueo de giro para bastidores de tráiler, impide el giro no deseado del eje.',
-        precio: 15.65,
+        precio: 13.61,
         imagen: 'assets/bloqueo de giro.jpg',
         especificaciones: [
             'Sistema "turn lock"',
@@ -123,7 +123,7 @@ const productos = [
         categoria: 'accesorios',
         nombre: 'PATÍN DE APOYO',
         descripcion: 'Patín de apoyo robusto para tráileres (landing gear), proporciona estabilidad al remolque.',
-        precio: 191.30,
+        precio: 166.35,
         imagen: 'assets/patin de apoyo.jpg',
         especificaciones: [
             'Tipo: Landing gear',
@@ -139,7 +139,7 @@ const productos = [
         categoria: 'ejes',
         nombre: 'EJE ALEMÁN 12 T',
         descripcion: 'Eje tipo alemán de 12 toneladas, ideal para quienes buscan precisión europea en el sistema de suspensión.',
-        precio: 695.65,
+        precio: 604.91,
         imagen: 'assets/eje aleman 12t.jpg',
         especificaciones: [
             'Longitud de vía: 1840 mm',
@@ -157,7 +157,7 @@ const productos = [
         categoria: 'ejes',
         nombre: 'EJE ALEMÁN 14 T',
         descripcion: 'Eje tipo alemán de 14 toneladas, preparado para cargas pesadas con robustos rodamientos.',
-        precio: 695.65,
+        precio: 604.91,
         imagen: 'assets/eje aleman 14t.jpg',
         especificaciones: [
             'Longitud de vía: 1840 mm',
@@ -175,7 +175,7 @@ const productos = [
         categoria: 'accesorios',
         nombre: 'KING PIN ATORNILLADO 2″',
         descripcion: 'Diseñado para garantizar conexión segura y duradera entre el remolque y la tractora.',
-        precio: 36.78,
+        precio: 31.98,
         imagen: 'assets/KING PIN.jpeg',
         especificaciones: [
             'Tipo: Atornillado (bolt-in)',
@@ -193,7 +193,7 @@ const productos = [
         categoria: 'aros',
         nombre: 'ARCOS CROMADOS',
         descripcion: 'Aros cromados capaces de soportar hasta 3.350 kg por rueda con acabado espejo.',
-        precio: 173.91,
+        precio: 151.22,
         imagen: 'assets/arcos cromados.jpeg',
         especificaciones: [
             'Diámetro de agujeros: 26 mm',
@@ -211,7 +211,7 @@ const productos = [
         categoria: 'suspension',
         nombre: 'SUSPENSIÓN DE EJES MECÁNICA (2 EJES)',
         descripcion: 'Sistema completo de suspensión mecánica con ballestas y componentes heavy-duty para semirremolques de 2 ejes.',
-        precio: 1050.00,
+        precio: 913.04,
         imagen: 'assets/suspension de ejes mecanica.jpeg',
         especificaciones: [
             'Configuración: 2 ejes',
@@ -231,7 +231,7 @@ const productos = [
         categoria: 'suspension',
         nombre: 'SUSPENSIÓN DE EJES MECÁNICA (3 EJES)',
         descripcion: 'Sistema completo de suspensión mecánica con ballestas y componentes heavy-duty para semirremolques de 3 ejes.',
-        precio: 1350.00,
+        precio: 1173.91,
         imagen: 'assets/suspension de ejes mecanica.jpeg',
         especificaciones: [
             'Configuración: 3 ejes',

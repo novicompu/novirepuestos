@@ -95,8 +95,8 @@ export async function onRequestPost(context) {
 
     // Correos de los asesores
     const recipients = [
-      { email: 'plataforma1@novirepuestos.com', name: 'Asesor 1 - Emilio' },
-      { email: 'plataforma2@novirepuestos.com', name: 'Asesor 2 - Benjamín' },
+      { email: 'plataforma1@novirepuestos.com', name: 'Asesor 1 - Ing. Sebastian Ontaneda O.' },
+      { email: 'plataforma2@novirepuestos.com', name: 'Asesor 2 - Mag. Santiago Robles' },
       { email: 'jbermeo@novicompu.com', name: 'Julio Bermeo' }
     ];
 
