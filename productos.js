@@ -4,8 +4,8 @@ const productos = [
         id: 1,
         categoria: 'plataforma',
         nombre: 'PLATAFORMA 3 EJES',
-        descripcion: 'Plataforma especializada para transporte de carga pesada con capacidad de hasta 50 toneladas.',
-        precio: 15122.87,
+        descripcion: 'Plataforma especializada para transporte de carga pesada con capacidad de hasta 40 toneladas.',
+        precio: 18260.87,
         imagen: 'assets/plataforma 3 ejes.jpeg',
         imagenes: [
             'assets/plataforma 3 ejes.jpeg',
@@ -18,17 +18,22 @@ const productos = [
         ],
         especificaciones: [
             'Dimensiones: 12.5 m × 2.55 m × 1.55 m',
-            'Capacidad de carga: hasta 50.000 kg',
+            'Capacidad de carga: hasta 40.000 kg',
             'Peso propio: 7.500 kg',
             'Ejes: 3 ejes de 13 T marca FUWA',
-            'Neumáticos: 12 unidades 12.00R22.5 marca Double Coin',
-            'Estructura principal: acero Q345 de alta resistencia',
+            'Neumáticos: 13 unidades 12.00R22.5 marca Double Coin con aros 9.0-22.5',
+            'Estructura principal: acero Q345 de alta resistencia, soldadura automática',
             'Alas: superior (14 mm) / inferior (20 mm)',
             'Placa central: 10 mm',
             'Altura del larguero: 500 mm',
-            'Sistema eléctrico: 24 V con luces LED',
+            'Sistema eléctrico: 24 V con luces LED, arnés modular y enchufe ISO de 7 vías',
+            'Accesorios incluidos: 1 caja de herramientas, portallanta para repuesto (1 neumático)',
+            'Acabado: granallado + pintura horneada (1 capa primer, 2 capas acabado)',
+            'Mayor durabilidad, resistencia a la corrosión y color estable',
+            'Color: opcional según requerimiento',
             'Kingpin: 2″ tipo atornillado',
             'Suspensión: mecánica y reforzada',
+            'Plataforma inferior: chapa de 3 mm',
             'Frenos: neumático dual, de alta seguridad',
             'Patas de apoyo (landing gear): 28 t marca JOST'
         ],
@@ -38,60 +43,55 @@ const productos = [
         id: 2,
         categoria: 'ejes',
         nombre: 'EJE AMERICANO 13 T (5″)',
-        descripcion: 'Eje tipo americano de 13 toneladas, con perfil de 127 × 127 mm (5″), robusto y confiable.',
-        precio: 544.42,
+        descripcion: 'Eje tipo americano de 13 toneladas, con perfil de 127 × 127 mm (5″), robusto y confiable. Su PCD de 335 mm lo hace compatible con una amplia variedad de configuraciones de remolque.',
+        precio: 626.08,
         imagen: 'assets/eje americano 13t 420x180.jpg',
         especificaciones: [
             'Longitud de vía: 1840 mm',
+            'Perfil: 127 × 127 mm (5″)',
             'Rodamiento Interior: 518445',
             'Rodamiento exterior: 518445',
             'Freno: 420 × 180 mm',
             'PCD: 335',
-            'Color: Negro',
-            'Perfil: 127 × 127 mm (5″)',
-            'Compatible con configuraciones de remolque'
+            'Color: Negro'
         ]
     },
     {
         id: 3,
         categoria: 'ejes',
         nombre: 'EJE AMERICANO 13 T (6″)',
-        descripcion: 'Eje tipo americano de 13 toneladas, con perfil de 150 × 150 mm (6″), diseñado para soporte resistente.',
-        precio: 544.42,
+        descripcion: 'Eje tipo americano de 13 toneladas, con perfil de 150 × 150 mm (6″), diseñado para proporcionar soporte resistente y estabilidad en la suspensión, ideal para tráileres y cargas pesadas.',
+        precio: 626.08,
         imagen: 'assets/eje americano 13t 420x220.jpg',
         especificaciones: [
             'Longitud de vía: 1840 mm',
+            'Perfil: 150 × 150 mm (6″)',
             'Rodamiento Interior: 518445',
             'Rodamiento exterior: 518445',
             'Freno: 420 × 220 mm',
             'PCD: 335',
-            'Color: Negro',
-            'Perfil: 150 × 150 mm (6″)',
-            'Ideal para tráileres y cargas pesadas'
+            'Color: Negro'
         ]
     },
     {
         id: 4,
         categoria: 'suspension',
         nombre: 'BALLESTAS',
-        descripcion: 'Juego de ballestas para suspensión mecánica de tráiler, proporciona soporte resistente y estabilidad.',
-        precio: 113.42,
+        descripcion: 'Juego de ballestas para suspensión mecánica de tráiler; comprende 10 hojas de 90 × 12 mm, con 5 principales. Proporciona soporte resistente y estabilidad en la suspensión, ideal para cargas pesadas y tráileres de alto rendimiento.',
+        precio: 130.43,
         imagen: 'assets/ballestas.jpg',
         especificaciones: [
             'Ancho: 90 mm',
             'Grosor: 12 mm',
-            'Piezas: 10 / 5 principales',
-            'Material de alta resistencia',
-            'Ideal para cargas pesadas',
-            'Compatible con tráileres de alto rendimiento'
+            'Piezas: 10 / 5 principales'
         ]
     },
     {
         id: 5,
         categoria: 'frenos',
         nombre: 'PULMÓN DOBLE ACCIÓN T3030',
-        descripcion: 'Cámara de freno neumática modelo T3030 para sistemas de frenado en remolques.',
-        precio: 18.90,
+        descripcion: 'Cámara de freno neumática modelo T3030 para sistemas de frenado en remolques. Diseñada para ofrecer una respuesta rápida y eficiente, contribuyendo a la seguridad del vehículo.',
+        precio: 21.74,
         imagen: 'assets/pulmon doble accion.jpg',
         especificaciones: [
             'Modelo: T3030',
@@ -106,8 +106,8 @@ const productos = [
         id: 6,
         categoria: 'accesorios',
         nombre: 'BLOQUEO DE GIRO',
-        descripcion: 'Sistema de bloqueo de giro para bastidores de tráiler, impide el giro no deseado del eje.',
-        precio: 13.61,
+        descripcion: 'Sistema de bloqueo de giro ("turn lock") para bastidores de tráiler, que impide el giro no deseado del eje o plataforma. Fabricado para brindar seguridad adicional y estabilidad estructural.',
+        precio: 15.65,
         imagen: 'assets/bloqueo de giro.jpg',
         especificaciones: [
             'Sistema "turn lock"',
@@ -122,8 +122,8 @@ const productos = [
         id: 7,
         categoria: 'accesorios',
         nombre: 'PATÍN DE APOYO',
-        descripcion: 'Patín de apoyo robusto para tráileres (landing gear), proporciona estabilidad al remolque.',
-        precio: 166.35,
+        descripcion: 'Patín de apoyo robusto para tráileres (landing gear), diseñado para proporcionar estabilidad al remolque cuando está estacionado o desacoplado. Construcción resistente, de fácil operación y con gran capacidad de carga.',
+        precio: 191.30,
         imagen: 'assets/patin de apoyo.jpg',
         especificaciones: [
             'Tipo: Landing gear',
@@ -139,7 +139,7 @@ const productos = [
         categoria: 'ejes',
         nombre: 'EJE ALEMÁN 12 T',
         descripcion: 'Eje tipo alemán de 12 toneladas, ideal para quienes buscan precisión europea en el sistema de suspensión.',
-        precio: 604.91,
+        precio: 695.65,
         imagen: 'assets/eje aleman 12t.jpg',
         especificaciones: [
             'Longitud de vía: 1840 mm',
@@ -147,17 +147,15 @@ const productos = [
             'Rodamiento exterior: 33118',
             'Freno: 420 × 180 mm',
             'PCD: 335',
-            'Color: Negro',
-            'Precisión europea',
-            'Alta durabilidad'
+            'Color: Negro'
         ]
     },
     {
         id: 9,
         categoria: 'ejes',
         nombre: 'EJE ALEMÁN 14 T',
-        descripcion: 'Eje tipo alemán de 14 toneladas, preparado para cargas pesadas con robustos rodamientos.',
-        precio: 604.91,
+        descripcion: 'Eje tipo alemán de 14 toneladas, preparado para cargas pesadas, equipado con robustos rodamientos y freno amplio. Ideal para aplicaciones industriales exigentes.',
+        precio: 695.65,
         imagen: 'assets/eje aleman 14t.jpg',
         especificaciones: [
             'Longitud de vía: 1840 mm',
@@ -165,49 +163,58 @@ const productos = [
             'Rodamiento exterior: 32219',
             'Freno: 420 × 220 mm',
             'PCD: 335',
-            'Color: Negro',
-            'Ideal para aplicaciones industriales',
-            'Equipado con freno amplio'
+            'Color: Negro'
         ]
     },
     {
         id: 10,
         categoria: 'accesorios',
         nombre: 'KING PIN ATORNILLADO 2″',
-        descripcion: 'Diseñado para garantizar conexión segura y duradera entre el remolque y la tractora.',
-        precio: 31.98,
+        descripcion: 'Diseñado para garantizar conexión segura y duradera entre el remolque y la tractora. Fabricado en acero de aleación forjado, soporta cargas exigentes y asegura estabilidad en maniobras y transporte pesado.',
+        precio: 34.78,
         imagen: 'assets/KING PIN.jpeg',
         especificaciones: [
-            'Tipo: Atornillado (bolt-in)',
-            'Tamaño: 2″',
-            'Tamaño de pernos: 8-16 mm',
-            'Material: acero de aleación forjado',
-            'Compatibilidad: semirremolques estándar',
-            'Torque: 160–190 Nm',
-            'Pernos: 8 de grado alto',
-            'Alta resistencia'
+            'Tipo: Atornillado (bolt-in) con placa de retención',
+            'Tamaño de pernos: 8 mm, 10 mm o 12 mm (hasta 16 mm)',
+            'Material: acero de aleación forjado, de alta resistencia',
+            'Compatibilidad: usado en semirremolques estándar',
+            'Torque: 160–190 Nm según versión',
+            'Pernos: 8 de grado alto'
         ]
     },
     {
         id: 11,
         categoria: 'aros',
         nombre: 'ARCOS CROMADOS',
-        descripcion: 'Aros cromados capaces de soportar hasta 3.350 kg por rueda con acabado espejo.',
-        precio: 151.22,
+        descripcion: 'Capaces de soportar hasta 3.350 kg por rueda. Garantizan durabilidad, resistencia y estética premium, ideales para ejes de semirremolques y plataformas de servicio.',
+        precio: 173.91,
         imagen: 'assets/arcos cromados.jpeg',
         especificaciones: [
             'Diámetro de agujeros: 26 mm',
-            'Carga máxima: 3.350 kg (7.400 lb)',
-            'Patrón de pernos: 10 × 285,75 mm (10 × 11,25″)',
-            'Acabado: cromado pulido espejo',
+            'Carga máxima estimada: 3.350 kg (7.400 lb)',
+            'Acabado: cromado pulido espejo (interior y exterior)',
             'Offset típico: 145–167 mm',
             'Material: acero de alta calidad',
-            'Durabilidad garantizada',
-            'Estética premium'
+            'Dimensiones: 22.5 × 8.25 × 14 mm'
         ]
     },
     {
         id: 12,
+        categoria: 'aros',
+        nombre: 'ARCOS DE ACERO',
+        descripcion: 'Fabricados para camiones y semirremolques de carga pesada, acero de alta resistencia y acabados anticorrosivos. Garantizan durabilidad y seguridad en cada viaje. Compatibles para ejes de 5″ y 6″, soportan hasta 3.350 kg por unidad.',
+        precio: 56.92,
+        imagen: 'assets/arco de acero.png',
+        especificaciones: [
+            'Dimensiones: 22.5″ diámetro × 8.25″ ancho × 14 mm espesor',
+            'Acabado: galvanizado o pintura electrostática anticorrosiva',
+            'Certificaciones: ISO / DOT / TUV',
+            'Centro: aprox. 220 mm',
+            'Producto de origen Americano y Europeo'
+        ]
+    },
+    {
+        id: 13,
         categoria: 'suspension',
         nombre: 'SUSPENSIÓN DE EJES MECÁNICA (2 EJES)',
         descripcion: 'Sistema completo de suspensión mecánica con ballestas y componentes heavy-duty para semirremolques de 2 ejes.',
@@ -222,12 +229,12 @@ const productos = [
             'Equalizer central: distribuye carga, alta estabilidad',
             'Acabado: pintura anticorrosiva horneada, durabilidad',
             'Aplicación: semirremolques y plataformas de servicio',
-            'Pernos en U y herrajes: grado automotriz, alta resistencia',
-            'Bujes/silentblocks: alta resistencia para reducir vibración y desgaste'
+            'Bujes/silentblocks: alta resistencia para reducir vibración y desgaste',
+            'Producto de origen Americano y Europeo'
         ]
     },
     {
-        id: 13,
+        id: 14,
         categoria: 'suspension',
         nombre: 'SUSPENSIÓN DE EJES MECÁNICA (3 EJES)',
         descripcion: 'Sistema completo de suspensión mecánica con ballestas y componentes heavy-duty para semirremolques de 3 ejes.',
@@ -242,8 +249,8 @@ const productos = [
             'Equalizer central: distribuye carga, alta estabilidad',
             'Acabado: pintura anticorrosiva horneada, durabilidad',
             'Aplicación: semirremolques y plataformas de servicio',
-            'Pernos en U y herrajes: grado automotriz, alta resistencia',
-            'Bujes/silentblocks: alta resistencia para reducir vibración y desgaste'
+            'Bujes/silentblocks: alta resistencia para reducir vibración y desgaste',
+            'Producto de origen Americano y Europeo'
         ]
     }
 ];
@@ -259,7 +266,7 @@ const categorias = {
 };
 
 // Nota sobre precios
-const notaPrecios = 'Los precios y valores de los productos listados en este catálogo son excluyentes de IVA. El Impuesto al Valor Agregado (IVA) será agregado al precio final de cada artículo, de acuerdo con la legislación vigente. Los precios son indicativos y pueden estar sujetos a cambios. Para obtener una cotización final con el IVA incluido, por favor comuníquese con nuestro equipo de ventas.';
+const notaPrecios = 'Los precios y valores de los productos listados en este catálogo de Novocarga son excluyentes de IVA. El Impuesto al Valor Agregado (IVA) será agregado al precio final de cada artículo, de acuerdo con la legislación vigente en Ecuador. Los precios son indicativos y pueden estar sujetos a cambios. Para obtener una cotización final con el IVA incluido, por favor comuníquese con nuestro equipo de ventas.';
 
 // Exportar datos
 if (typeof module !== 'undefined' && module.exports) {
