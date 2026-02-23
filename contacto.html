@@ -293,6 +293,36 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script src="form-handler.js"></script>
 <script>
     document.getElementById('mobile-menu-btn')?.addEventListener('click', function(){ document.getElementById('mobile-menu').classList.toggle('hidden'); });
+
+    // ── Facebook Pixel: Coincidencias Avanzadas ──────────────────────────────
+    // Cuando el usuario completa email o teléfono, se actualizan los datos de
+    // coincidencia avanzada (Advanced Matching) para mejorar la atribución.
+    (function() {
+        function normalizarEmail(v) { return v.trim().toLowerCase(); }
+        function normalizarTelefono(v) { return v.replace(/[\s\-\(\)]/g, ''); }
+
+        function actualizarAM() {
+            if (typeof fbq === 'undefined') return;
+            var emVal = (document.getElementById('contactEmail') || {}).value || '';
+            var phVal = (document.getElementById('contactPhone') || {}).value || '';
+            var datos = {};
+            if (emVal && emVal.indexOf('@') > -1) datos.em = normalizarEmail(emVal);
+            if (phVal && phVal.replace(/\D/g, '').length >= 7) datos.ph = normalizarTelefono(phVal);
+            if (Object.keys(datos).length > 0) {
+                fbq('init', '26537422319176155', datos);
+            }
+        }
+
+        ['contactEmail', 'contactPhone'].forEach(function(id) {
+            var el = document.getElementById(id);
+            if (el) el.addEventListener('blur', actualizarAM);
+        });
+
+        // También al enviar el formulario, antes de procesar
+        var form = document.getElementById('contactForm');
+        if (form) form.addEventListener('submit', actualizarAM, true);
+    })();
+    // ────────────────────────────────────────────────────────────────────────
 </script>
 </body>
 </html>
