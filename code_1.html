@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NoviRepuestos - Catálogo Avanzado de Productos</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FACC15", // Yellow-400
+                        secondary: "#D97706", // Amber-600
+                        "background-light": "#F9FAFB", // Gray-50
+                        "background-dark": "#111827", // Gray-900
+                        "surface-dark": "#1F2937", // Gray-800
+                    },
+                    fontFamily: {
+                        sans: ["Inter", "sans-serif"],
+                    },
+                },
+            },
+        };
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }.sidebar-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+        .sidebar-scroll::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .sidebar-scroll::-webkit-scrollbar-thumb {
+            background-color: #cbd5e1;
+            border-radius: 20px;
+        }
+        .dark .sidebar-scroll::-webkit-scrollbar-thumb {
+            background-color: #374151;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-200 transition-colors duration-300 min-h-screen flex flex-col">
+<header class="bg-white dark:bg-surface-dark shadow-sm border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50">
+<div class="bg-gray-900 text-gray-300 text-xs py-1.5 px-4 hidden sm:block">
+<div class="max-w-[1600px] mx-auto flex justify-between items-center">
+<div class="flex gap-4">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">phone</span> +593 99 999 9999</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">mail</span> ventas@novirepuestos.com</span>
+</div>
+<div class="flex gap-4">
+<a class="hover:text-primary transition" href="#">Soporte Técnico</a>
+<a class="hover:text-primary transition" href="#">Distribuidores</a>
+</div>
+</div>
+</div>
+<div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-16 gap-8">
+<div class="flex-shrink-0 flex items-center cursor-pointer" onclick="window.location.href='#'">
+<div class="flex items-center gap-1 font-black text-2xl italic text-primary tracking-tighter">
+<span class="transform -skew-x-12">N</span>
+<span class="transform -skew-x-12">R</span>
+</div>
+<span class="ml-2 font-bold text-gray-900 dark:text-white hidden md:block">NoviRepuestos</span>
+</div>
+<div class="flex-1 max-w-2xl hidden md:block">
+<div class="relative">
+<input class="w-full bg-gray-100 dark:bg-gray-700 border-none rounded-md py-2 pl-4 pr-10 text-sm focus:ring-2 focus:ring-primary dark:text-white" placeholder="Buscar por número de parte, nombre o categoría..." type="text"/>
+<button class="absolute right-2 top-1.5 text-gray-500 hover:text-primary">
+<span class="material-symbols-outlined">search</span>
+</button>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex items-center gap-2 text-sm font-semibold text-gray-700 dark:text-gray-200 hover:text-primary transition">
+<span class="material-symbols-outlined">grid_view</span>
+<span class="hidden lg:inline">Catálogo</span>
+</button>
+<a class="bg-primary text-gray-900 px-4 py-2 rounded-md text-sm font-bold shadow-sm hover:bg-yellow-300 transition flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+<span class="hidden sm:inline">Cotizar Todo</span>
+</a>
+<button class="md:hidden p-2 text-gray-600 dark:text-gray-300">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</div>
+<div class="md:hidden px-4 pb-3">
+<input class="w-full bg-gray-100 dark:bg-gray-700 border-none rounded-md py-2 px-4 text-sm focus:ring-2 focus:ring-primary dark:text-white" placeholder="Buscar repuestos..." type="text"/>
+</div>
+</header>
+<main class="flex-grow max-w-[1600px] mx-auto w-full px-4 sm:px-6 lg:px-8 py-6">
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
+<div>
+<nav class="flex text-sm text-gray-500 dark:text-gray-400 mb-1">
+<a class="hover:text-primary" href="#">Inicio</a>
+<span class="mx-2">/</span>
+<span class="text-gray-900 dark:text-white font-medium">Catálogo General</span>
+</nav>
+<h1 class="text-2xl font-bold text-gray-900 dark:text-white">Repuestos de Carga Pesada</h1>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-sm text-gray-500 dark:text-gray-400">Ordenar por:</span>
+<select class="form-select bg-white dark:bg-surface-dark border-gray-300 dark:border-gray-600 rounded-md text-sm py-1.5 pl-3 pr-8 focus:ring-primary focus:border-primary dark:text-white">
+<option>Relevancia</option>
+<option>Precio: Menor a Mayor</option>
+<option>Precio: Mayor a Menor</option>
+<option>Más recientes</option>
+</select>
+</div>
+</div>
+<div class="flex flex-col lg:flex-row gap-8">
+<aside class="w-full lg:w-72 flex-shrink-0 space-y-8">
+<button class="lg:hidden w-full bg-white dark:bg-surface-dark border border-gray-300 dark:border-gray-600 py-2 px-4 rounded-md flex justify-between items-center font-medium mb-4">
+<span>Filtros</span>
+<span class="material-symbols-outlined">filter_list</span>
+</button>
+<div class="hidden lg:block space-y-6 bg-white dark:bg-surface-dark p-5 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm">
+<div>
+<div class="flex justify-between items-center mb-3">
+<h3 class="font-bold text-gray-900 dark:text-white">Filtros Activos</h3>
+<button class="text-xs text-secondary hover:underline">Limpiar todo</button>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-yellow-100 text-yellow-800">
+                                Industrial
+                                <button class="ml-1 text-yellow-600 hover:text-yellow-800"><span class="material-symbols-outlined text-[14px]">close</span></button>
+</span>
+</div>
+</div>
+<hr class="border-gray-200 dark:border-gray-700"/>
+<div>
+<h3 class="font-bold text-gray-900 dark:text-white mb-3">Categorías</h3>
+<div class="space-y-2">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="form-checkbox text-primary rounded border-gray-300 focus:ring-primary" type="checkbox"/>
+<span class="text-sm text-gray-600 dark:text-gray-300 group-hover:text-primary transition">Neumáticos &amp; Aros</span>
+<span class="ml-auto text-xs text-gray-400">124</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="form-checkbox text-primary rounded border-gray-300 focus:ring-primary" type="checkbox"/>
+<span class="text-sm text-gray-600 dark:text-gray-300 group-hover:text-primary transition">Plataformas / Camas</span>
+<span class="ml-auto text-xs text-gray-400">45</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="form-checkbox text-primary rounded border-gray-300 focus:ring-primary" type="checkbox"/>
+<span class="text-sm text-gray-600 dark:text-gray-300 group-hover:text-primary transition">Ejes &amp; Suspensión</span>
+<span class="ml-auto text-xs text-gray-400">89</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="form-checkbox text-primary rounded border-gray-300 focus:ring-primary" type="checkbox"/>
+<span class="text-sm text-gray-600 dark:text-gray-300 group-hover:text-primary transition">Sistema de Frenos</span>
+<span class="ml-auto text-xs text-gray-400">67</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="form-checkbox text-primary rounded border-gray-300 focus:ring-primary" type="checkbox"/>
+<span class="text-sm text-gray-600 dark:text-gray-300 group-hover:text-primary transition">Hidráulicos</span>
+<span class="ml-auto text-xs text-gray-400">32</span>
+</label>
+</div>
+</div>
+<hr class="border-gray-200 dark:border-gray-700"/>
+<div>
+<h3 class="font-bold text-gray-900 dark:text-white mb-3">Marcas</h3>
+<div class="space-y-2 max-h-40 overflow-y-auto sidebar-scroll pr-1">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="form-checkbox text-primary rounded border-gray-300 focus:ring-primary" type="checkbox"/>
+<span class="text-sm text-gray-600 dark:text-gray-300">NoviParts OEM</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="form-checkbox text-primary rounded border-gray-300 focus:ring-primary" type="checkbox"/>
+<span class="text-sm text-gray-600 dark:text-gray-300">Meritor</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="form-checkbox text-primary rounded border-gray-300 focus:ring-primary" type="checkbox"/>
+<span class="text-sm text-gray-600 dark:text-gray-300">Hendrickson</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="form-checkbox text-primary rounded border-gray-300 focus:ring-primary" type="checkbox"/>
+<span class="text-sm text-gray-600 dark:text-gray-300">Bendix</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="form-checkbox text-primary rounded border-gray-300 focus:ring-primary" type="checkbox"/>
+<span class="text-sm text-gray-600 dark:text-gray-300">Firestone</span>
+</label>
+</div>
+</div>
+<hr class="border-gray-200 dark:border-gray-700"/>
+<div>
+<h3 class="font-bold text-gray-900 dark:text-white mb-3">Rango de Precio</h3>
+<div class="flex items-center gap-2 mb-4">
+<div class="relative w-full">
+<span class="absolute left-2 top-1.5 text-gray-500 text-xs">$</span>
+<input class="w-full pl-5 py-1 text-sm bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded" placeholder="Min" type="number" value="0"/>
+</div>
+<span class="text-gray-400">-</span>
+<div class="relative w-full">
+<span class="absolute left-2 top-1.5 text-gray-500 text-xs">$</span>
+<input class="w-full pl-5 py-1 text-sm bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded" placeholder="Max" type="number" value="5000"/>
+</div>
+</div>
+<input class="w-full h-1 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-primary" type="range"/>
+</div>
+<button class="w-full bg-secondary hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded transition text-sm">
+                        Aplicar Filtros
+                    </button>
+</div>
+</aside>
+<div class="flex-1">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-6">
+<div class="bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300 group flex flex-col">
+<div class="relative h-56 bg-gray-100 dark:bg-gray-800 p-2 overflow-hidden">
+<span class="absolute top-2 left-2 bg-gray-900 text-primary text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded z-10">Heavy Duty</span>
+<img alt="Plataforma 3 Ejes" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 rounded-sm mix-blend-multiply dark:mix-blend-normal" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZj-Rb_jjCN14GIgIwtpEzX9JZSdPd1EmudJFOIXcEU17XJijkXlpEm24HdnNCqthA5X1s6ojKKeoJlg4e9RBdX1HUy_DHNdnj6MfhJiQVF_e7boUey71aREiB19mje5W3-NIcopRvQwydFmA6CbJCxyHMDyMobLLDZJQA1WPklydbhDK_1q4IPy13PP1Z8bgI8ZzRFOllX6nlMy7A-O8I1u3075oE1-_srQOiNrHbWgBu7nioKRj2hpU7pn6KKMd9pRxTCkNWWRTS"/>
+<div class="absolute bottom-2 right-2 flex gap-1">
+<button class="bg-white dark:bg-gray-700 p-1.5 rounded-full shadow hover:text-primary transition text-gray-600 dark:text-gray-300">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="bg-white dark:bg-gray-700 p-1.5 rounded-full shadow hover:text-primary transition text-gray-600 dark:text-gray-300">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+</div>
+</div>
+<div class="p-4 flex-1 flex flex-col">
+<div class="mb-1 text-xs font-semibold text-secondary">PLATAFORMAS</div>
+<h3 class="font-bold text-gray-900 dark:text-white text-lg leading-tight mb-3 group-hover:text-primary transition-colors">Plataforma 3 Ejes Reforzada 40ft</h3>
+<ul class="text-xs text-gray-600 dark:text-gray-400 space-y-1 list-disc list-inside mb-4 flex-grow">
+<li>Capacidad: 40 Toneladas</li>
+<li>Largo: 12.2 metros</li>
+<li>Piso: Acero antideslizante 4mm</li>
+<li>Suspensión: Mecánica 3 ejes</li>
+</ul>
+<div class="pt-3 border-t border-gray-100 dark:border-gray-700 mt-auto">
+<div class="flex justify-between items-end mb-3">
+<div>
+<p class="text-xs text-gray-500">Precio Lista</p>
+<p class="text-xl font-black text-gray-900 dark:text-white">$18,260</p>
+</div>
+<span class="text-xs text-green-600 bg-green-100 dark:bg-green-900 dark:text-green-300 px-2 py-0.5 rounded-full font-medium">En Stock</span>
+</div>
+<a class="w-full bg-white border-2 border-green-500 text-green-600 hover:bg-green-50 font-bold py-2 px-3 rounded flex items-center justify-center gap-2 text-sm transition group-hover:bg-green-600 group-hover:text-white" href="https://wa.me/593999999999?text=Hola,%20me%20interesa%20la%20Plataforma%203%20Ejes" target="_blank">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+                                    Cotizar WhatsApp
+                                </a>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300 group flex flex-col">
+<div class="relative h-56 bg-gray-100 dark:bg-gray-800 p-2 overflow-hidden">
+<span class="absolute top-2 left-2 bg-secondary text-white text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded z-10">OEM Certified</span>
+<img alt="Eje Tipo Americano" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 rounded-sm mix-blend-multiply dark:mix-blend-normal" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWJLbwbM4gVddzwdmUl8eSyCFj1ytSVw5Uk56ZW78e2nr2T94qghJDFE894BWJPQnhsGzV4hZyy-vMSiP3zY1nXaJu1KarbIS6OfWiK_L-DSylG1oKKHTomw2kEv3uFdPhlbIjg03Qg-QGGWv4Mgb4ZCKz0HL2Q9bBaQP4chMc6vk7jmFKDV2L_-shBSxCYyVe7EhCBHNOW0Ucjzgxsm4PuDlggt5vgV7ABnJYoBgkgplDCZ5nDE1O3twcvxZKSZl7i5zYS_fnaVQ-"/>
+</div>
+<div class="p-4 flex-1 flex flex-col">
+<div class="mb-1 text-xs font-semibold text-secondary">EJES &amp; TREN MOTRIZ</div>
+<h3 class="font-bold text-gray-900 dark:text-white text-lg leading-tight mb-3 group-hover:text-primary transition-colors">Eje Tubular Tipo Americano 30k</h3>
+<ul class="text-xs text-gray-600 dark:text-gray-400 space-y-1 list-disc list-inside mb-4 flex-grow">
+<li>Capacidad: 30,000 lbs</li>
+<li>Trocha: 77.5 pulgadas</li>
+<li>Incluye: Kit frenos y matracas</li>
+<li>Compatibilidad: Universal</li>
+</ul>
+<div class="pt-3 border-t border-gray-100 dark:border-gray-700 mt-auto">
+<div class="flex justify-between items-end mb-3">
+<div>
+<p class="text-xs text-gray-500">Precio Lista</p>
+<p class="text-xl font-black text-gray-900 dark:text-white">$1,450</p>
+</div>
+<span class="text-xs text-green-600 bg-green-100 dark:bg-green-900 dark:text-green-300 px-2 py-0.5 rounded-full font-medium">En Stock</span>
+</div>
+<a class="w-full bg-white border-2 border-green-500 text-green-600 hover:bg-green-50 font-bold py-2 px-3 rounded flex items-center justify-center gap-2 text-sm transition group-hover:bg-green-600 group-hover:text-white" href="#">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+                                    Cotizar WhatsApp
+                                </a>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300 group flex flex-col">
+<div class="relative h-56 bg-gray-100 dark:bg-gray-800 p-2 overflow-hidden">
+<span class="absolute top-2 left-2 bg-gray-900 text-primary text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded z-10">Premium Kit</span>
+<img alt="Suspensión Neumática" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 rounded-sm mix-blend-multiply dark:mix-blend-normal" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgXhyof0D7IlfMHObuyRvVaOPa4_1oDZTYMa3Lv_ASJ6LaUbSsDr1L26vsS4g7ZmbL15Hlbso11vGLECpYG56ltKXzsdvcFgEfrH0UDfBeaYvxxhfJ8uaJFoNI-xHvL_uajoxnpUZpY22BtCoNeWrURD9MGdzC4jG_XZEJRknmOA4PPlHad5YQA6ozaeYfd4dCaBUkXBFUEviqP5m257YjtOYFaKTNYXtORWrl-Edav37AuYOKWV5f5f6Mbu62s3yn-prHD0ZN5ChG"/>
+</div>
+<div class="p-4 flex-1 flex flex-col">
+<div class="mb-1 text-xs font-semibold text-secondary">SUSPENSIÓN</div>
+<h3 class="font-bold text-gray-900 dark:text-white text-lg leading-tight mb-3 group-hover:text-primary transition-colors">Kit Suspensión Neumática Integrada</h3>
+<ul class="text-xs text-gray-600 dark:text-gray-400 space-y-1 list-disc list-inside mb-4 flex-grow">
+<li>Tipo: Aire con amortiguadores</li>
+<li>Altura de manejo: 14-17"</li>
+<li>Bolsas de aire: Doble convoluta</li>
+<li>Garantía: 2 Años</li>
+</ul>
+<div class="pt-3 border-t border-gray-100 dark:border-gray-700 mt-auto">
+<div class="flex justify-between items-end mb-3">
+<div>
+<p class="text-xs text-gray-500">Precio Lista</p>
+<p class="text-xl font-black text-gray-900 dark:text-white">$2,100</p>
+</div>
+<span class="text-xs text-blue-600 bg-blue-100 dark:bg-blue-900 dark:text-blue-300 px-2 py-0.5 rounded-full font-medium">Bajo Pedido</span>
+</div>
+<a class="w-full bg-white border-2 border-green-500 text-green-600 hover:bg-green-50 font-bold py-2 px-3 rounded flex items-center justify-center gap-2 text-sm transition group-hover:bg-green-600 group-hover:text-white" href="#">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+                                    Cotizar WhatsApp
+                                </a>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300 group flex flex-col">
+<div class="relative h-56 bg-gray-100 dark:bg-gray-800 p-2 overflow-hidden flex items-center justify-center">
+<span class="absolute top-2 left-2 bg-yellow-400 text-black text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded z-10">Best Seller</span>
+<span class="material-symbols-outlined text-9xl text-gray-300">tire_repair</span>
+</div>
+<div class="p-4 flex-1 flex flex-col">
+<div class="mb-1 text-xs font-semibold text-secondary">NEUMÁTICOS</div>
+<h3 class="font-bold text-gray-900 dark:text-white text-lg leading-tight mb-3 group-hover:text-primary transition-colors">Neumático Radial 295/80R22.5</h3>
+<ul class="text-xs text-gray-600 dark:text-gray-400 space-y-1 list-disc list-inside mb-4 flex-grow">
+<li>Medida: 295/80R22.5</li>
+<li>Capas: 18 PR</li>
+<li>Posición: Toda posición</li>
+<li>Uso: Carretera / Mixto</li>
+</ul>
+<div class="pt-3 border-t border-gray-100 dark:border-gray-700 mt-auto">
+<div class="flex justify-between items-end mb-3">
+<div>
+<p class="text-xs text-gray-500">Precio Lista</p>
+<p class="text-xl font-black text-gray-900 dark:text-white">$385.00</p>
+</div>
+<span class="text-xs text-green-600 bg-green-100 dark:bg-green-900 dark:text-green-300 px-2 py-0.5 rounded-full font-medium">En Stock</span>
+</div>
+<a class="w-full bg-white border-2 border-green-500 text-green-600 hover:bg-green-50 font-bold py-2 px-3 rounded flex items-center justify-center gap-2 text-sm transition group-hover:bg-green-600 group-hover:text-white" href="#">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+                                    Cotizar WhatsApp
+                                </a>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300 group flex flex-col">
+<div class="relative h-56 bg-gray-100 dark:bg-gray-800 p-2 overflow-hidden flex items-center justify-center">
+<span class="absolute top-2 left-2 bg-gray-900 text-primary text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded z-10">Industrial Grade</span>
+<span class="material-symbols-outlined text-9xl text-gray-300">settings_applications</span>
+</div>
+<div class="p-4 flex-1 flex flex-col">
+<div class="mb-1 text-xs font-semibold text-secondary">FRENOS</div>
+<h3 class="font-bold text-gray-900 dark:text-white text-lg leading-tight mb-3 group-hover:text-primary transition-colors">Cámara de Aire Doble T30/30</h3>
+<ul class="text-xs text-gray-600 dark:text-gray-400 space-y-1 list-disc list-inside mb-4 flex-grow">
+<li>Tipo: Doble T30/30</li>
+<li>Vástago: Largo estándar</li>
+<li>Conexión: NPT 3/8"</li>
+<li>Certificación: DOT</li>
+</ul>
+<div class="pt-3 border-t border-gray-100 dark:border-gray-700 mt-auto">
+<div class="flex justify-between items-end mb-3">
+<div>
+<p class="text-xs text-gray-500">Precio Lista</p>
+<p class="text-xl font-black text-gray-900 dark:text-white">$45.50</p>
+</div>
+<span class="text-xs text-green-600 bg-green-100 dark:bg-green-900 dark:text-green-300 px-2 py-0.5 rounded-full font-medium">En Stock</span>
+</div>
+<a class="w-full bg-white border-2 border-green-500 text-green-600 hover:bg-green-50 font-bold py-2 px-3 rounded flex items-center justify-center gap-2 text-sm transition group-hover:bg-green-600 group-hover:text-white" href="#">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+                                    Cotizar WhatsApp
+                                </a>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300 group flex flex-col">
+<div class="relative h-56 bg-gray-100 dark:bg-gray-800 p-2 overflow-hidden flex items-center justify-center">
+<span class="absolute top-2 left-2 bg-gray-900 text-primary text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded z-10">Reinforced</span>
+<span class="material-symbols-outlined text-9xl text-gray-300">height</span>
+</div>
+<div class="p-4 flex-1 flex flex-col">
+<div class="mb-1 text-xs font-semibold text-secondary">ACCESORIOS</div>
+<h3 class="font-bold text-gray-900 dark:text-white text-lg leading-tight mb-3 group-hover:text-primary transition-colors">Juego de Patines de Apoyo</h3>
+<ul class="text-xs text-gray-600 dark:text-gray-400 space-y-1 list-disc list-inside mb-4 flex-grow">
+<li>Capacidad Estática: 80 Ton</li>
+<li>Capacidad Elevación: 28 Ton</li>
+<li>Velocidades: 2 (Alta/Baja)</li>
+<li>Material: Acero alta resistencia</li>
+</ul>
+<div class="pt-3 border-t border-gray-100 dark:border-gray-700 mt-auto">
+<div class="flex justify-between items-end mb-3">
+<div>
+<p class="text-xs text-gray-500">Precio Lista</p>
+<p class="text-xl font-black text-gray-900 dark:text-white">$620.00</p>
+</div>
+<span class="text-xs text-green-600 bg-green-100 dark:bg-green-900 dark:text-green-300 px-2 py-0.5 rounded-full font-medium">En Stock</span>
+</div>
+<a class="w-full bg-white border-2 border-green-500 text-green-600 hover:bg-green-50 font-bold py-2 px-3 rounded flex items-center justify-center gap-2 text-sm transition group-hover:bg-green-600 group-hover:text-white" href="#">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+                                    Cotizar WhatsApp
+                                </a>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-12 flex justify-center">
+<nav class="flex items-center gap-1">
+<button class="p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded bg-primary text-gray-900 font-bold">1</button>
+<button class="w-10 h-10 flex items-center justify-center rounded hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-300 font-medium transition">2</button>
+<button class="w-10 h-10 flex items-center justify-center rounded hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-300 font-medium transition">3</button>
+<span class="px-2 text-gray-400">...</span>
+<button class="w-10 h-10 flex items-center justify-center rounded hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-300 font-medium transition">12</button>
+<button class="p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</nav>
+</div>
+</div>
+</div>
+</main>
+<footer class="bg-gray-900 text-white py-12 border-t border-gray-800 mt-auto">
+<div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<div class="col-span-1 md:col-span-1">
+<div class="flex items-center gap-1 font-black text-3xl italic text-primary tracking-tighter mb-4">
+<span class="transform -skew-x-12">N</span>
+<span class="transform -skew-x-12">R</span>
+</div>
+<p class="text-gray-400 text-sm">Expertos en repuestos para carga pesada. Calidad y confianza para el transportista ecuatoriano.</p>
+</div>
+<div>
+<h4 class="font-bold text-lg mb-4 text-primary">Atención al Cliente</h4>
+<ul class="space-y-2 text-gray-400 text-sm">
+<li><a class="hover:text-white transition" href="#">Rastrea tu pedido</a></li>
+<li><a class="hover:text-white transition" href="#">Política de devoluciones</a></li>
+<li><a class="hover:text-white transition" href="#">Garantías</a></li>
+<li><a class="hover:text-white transition" href="#">Preguntas Frecuentes</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-lg mb-4 text-primary">Categorías Populares</h4>
+<ul class="space-y-2 text-gray-400 text-sm">
+<li><a class="hover:text-white transition" href="#">Plataformas</a></li>
+<li><a class="hover:text-white transition" href="#">Ejes</a></li>
+<li><a class="hover:text-white transition" href="#">Suspensión</a></li>
+<li><a class="hover:text-white transition" href="#">Frenos</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-lg mb-4 text-primary">Contacto Comercial</h4>
+<ul class="space-y-2 text-gray-400 text-sm">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">phone</span> +593 99 999 9999</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">email</span> ventas@novirepuestos.com</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">location_on</span> Quito, Ecuador</li>
+</ul>
+</div>
+</div>
+<div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500 text-sm flex flex-col md:flex-row justify-between items-center">
+<span>© 2023 NoviRepuestos. Todos los derechos reservados.</span>
+<div class="flex gap-4 mt-4 md:mt-0">
+<span class="material-symbols-outlined text-gray-600">credit_card</span>
+<span class="material-symbols-outlined text-gray-600">account_balance</span>
+<span class="material-symbols-outlined text-gray-600">local_shipping</span>
+</div>
+</div>
+</div>
+</footer>
+
+</body></html>

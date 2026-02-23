@@ -1,0 +1,198 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NoviRepuestos - Cat&aacute;logo de Productos</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+        darkMode:"class",
+        theme:{ extend:{ colors:{ primary:"#FACC15", secondary:"#D97706", "background-light":"#F9FAFB", "background-dark":"#111827", "surface-dark":"#1F2937" }, fontFamily:{sans:["Inter","sans-serif"]} } }
+    };
+</script>
+<style>body { font-family: "Inter", sans-serif; }</style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-200 transition-colors duration-300 min-h-screen flex flex-col">
+
+<!-- Header -->
+<header class="bg-white dark:bg-surface-dark shadow-sm border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50">
+    <div class="bg-gray-900 text-gray-300 text-xs py-1.5 px-4 hidden sm:block">
+        <div class="max-w-[1600px] mx-auto flex justify-between items-center">
+            <div class="flex gap-4">
+                <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">phone</span> +593 98 752 3946</span>
+                <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">chat</span> +593 98 406 2784</span>
+            </div>
+            <span class="text-gray-400">Lunes a Viernes 8:00 &ndash; 17:00</span>
+        </div>
+    </div>
+    <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16 gap-8">
+            <a href="index.html" class="flex-shrink-0 flex items-center gap-3">
+                <img src="assets/NR LOGO TRANSP.png" alt="NoviRepuestos" class="h-10 w-auto">
+                <img src="assets/NOVI REPUESTOS B.png" alt="NoviRepuestos" class="h-7 w-auto dark:invert">
+            </a>
+            <div class="flex-1 max-w-2xl hidden md:block">
+                <div class="relative">
+                    <input id="search-input" class="w-full bg-gray-100 dark:bg-gray-700 border-none rounded-md py-2 pl-4 pr-10 text-sm focus:ring-2 focus:ring-primary dark:text-white" placeholder="Buscar por nombre o especificaci&oacute;n..." type="text"/>
+                    <span class="absolute right-3 top-2 text-gray-400 material-symbols-outlined">search</span>
+                </div>
+            </div>
+            <div class="flex items-center gap-3">
+                <nav class="hidden md:flex gap-6 items-center font-medium text-sm text-gray-600 dark:text-gray-300">
+                    <a class="hover:text-primary transition" href="index.html">Inicio</a>
+                    <a class="hover:text-primary transition" href="nosotros.html">Nosotros</a>
+                    <a class="text-primary font-bold" href="catalogo.html">Cat&aacute;logo</a>
+                    <a class="hover:text-primary transition" href="contacto.html">Contacto</a>
+                </nav>
+                <a class="bg-primary text-gray-900 px-4 py-2 rounded-md text-sm font-bold shadow-sm hover:bg-yellow-300 transition flex items-center gap-2"
+                   href="https://api.whatsapp.com/send/?phone=%2B593984062784&text=Hola,%20quiero%20cotizar%20varios%20productos&app_absent=0" target="_blank">
+                    <span class="material-symbols-outlined text-[18px]">chat</span>
+                    <span class="hidden sm:inline">Cotizar Todo</span>
+                </a>
+                <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-600 dark:text-gray-300"><span class="material-symbols-outlined">menu</span></button>
+            </div>
+        </div>
+    </div>
+    <div class="md:hidden px-4 pb-3">
+        <input id="search-input-mobile" class="w-full bg-gray-100 dark:bg-gray-700 border-none rounded-md py-2 px-4 text-sm focus:ring-2 focus:ring-primary dark:text-white" placeholder="Buscar repuestos..." type="text"/>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-surface-dark border-t border-gray-200 dark:border-gray-700 px-4 py-4 space-y-3">
+        <a class="block text-gray-700 dark:text-gray-300 hover:text-primary" href="index.html">Inicio</a>
+        <a class="block text-gray-700 dark:text-gray-300 hover:text-primary" href="nosotros.html">Nosotros</a>
+        <a class="block font-semibold text-primary" href="catalogo.html">Cat&aacute;logo</a>
+        <a class="block text-gray-700 dark:text-gray-300 hover:text-primary" href="contacto.html">Contacto</a>
+    </div>
+</header>
+
+<main class="flex-grow max-w-[1600px] mx-auto w-full px-4 sm:px-6 lg:px-8 py-6">
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
+        <div>
+            <nav class="flex text-sm text-gray-500 dark:text-gray-400 mb-1">
+                <a class="hover:text-primary" href="index.html">Inicio</a>
+                <span class="mx-2">/</span>
+                <span class="text-gray-900 dark:text-white font-medium">Cat&aacute;logo General</span>
+            </nav>
+            <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Repuestos de Carga Pesada</h1>
+            <p class="text-sm text-gray-500 mt-1">Los precios son referenciales y <strong>no incluyen IVA</strong>.</p>
+        </div>
+        <div class="flex items-center gap-3">
+            <span class="text-sm text-gray-500 dark:text-gray-400" id="products-count">Cargando...</span>
+        </div>
+    </div>
+
+    <div class="flex flex-col lg:flex-row gap-8">
+        <!-- Sidebar Filters -->
+        <aside class="w-full lg:w-72 flex-shrink-0">
+            <button id="toggle-filters" class="lg:hidden w-full bg-white dark:bg-surface-dark border border-gray-300 dark:border-gray-600 py-2 px-4 rounded-md flex justify-between items-center font-medium mb-4">
+                <span>Filtros</span>
+                <span class="material-symbols-outlined">filter_list</span>
+            </button>
+            <div id="filters-panel" class="hidden lg:block space-y-6 bg-white dark:bg-surface-dark p-5 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm">
+                <div>
+                    <div class="flex justify-between items-center mb-3">
+                        <h3 class="font-bold text-gray-900 dark:text-white">Filtrar por Categor&iacute;a</h3>
+                        <button id="clear-filters" class="text-xs text-secondary hover:underline">Limpiar</button>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="flex items-center gap-3 cursor-pointer group">
+                            <input type="checkbox" data-cat="plataforma" class="form-checkbox text-primary rounded border-gray-300 focus:ring-primary"/>
+                            <span class="text-sm text-gray-600 dark:text-gray-300 group-hover:text-primary transition">Plataformas</span>
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer group">
+                            <input type="checkbox" data-cat="ejes" class="form-checkbox text-primary rounded border-gray-300 focus:ring-primary"/>
+                            <span class="text-sm text-gray-600 dark:text-gray-300 group-hover:text-primary transition">Ejes</span>
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer group">
+                            <input type="checkbox" data-cat="suspension" class="form-checkbox text-primary rounded border-gray-300 focus:ring-primary"/>
+                            <span class="text-sm text-gray-600 dark:text-gray-300 group-hover:text-primary transition">Suspensi&oacute;n</span>
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer group">
+                            <input type="checkbox" data-cat="frenos" class="form-checkbox text-primary rounded border-gray-300 focus:ring-primary"/>
+                            <span class="text-sm text-gray-600 dark:text-gray-300 group-hover:text-primary transition">Frenos</span>
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer group">
+                            <input type="checkbox" data-cat="aros" class="form-checkbox text-primary rounded border-gray-300 focus:ring-primary"/>
+                            <span class="text-sm text-gray-600 dark:text-gray-300 group-hover:text-primary transition">Aros</span>
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer group">
+                            <input type="checkbox" data-cat="accesorios" class="form-checkbox text-primary rounded border-gray-300 focus:ring-primary"/>
+                            <span class="text-sm text-gray-600 dark:text-gray-300 group-hover:text-primary transition">Accesorios</span>
+                        </label>
+                    </div>
+                </div>
+                <hr class="border-gray-200 dark:border-gray-700"/>
+                <div class="bg-yellow-50 dark:bg-yellow-900/20 rounded-lg p-4">
+                    <p class="text-xs text-yellow-800 dark:text-yellow-300 font-medium mb-3">
+                        <span class="material-symbols-outlined text-[14px] align-middle">info</span>
+                        Precios referenciales sin IVA. Contacta para cotizaci&oacute;n final.
+                    </p>
+                    <a class="w-full bg-secondary hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded text-sm flex items-center justify-center gap-2 transition"
+                       href="https://api.whatsapp.com/send/?phone=%2B593984062784&text=Hola,%20quiero%20cotizar&app_absent=0" target="_blank">
+                        <span class="material-symbols-outlined text-[16px]">chat</span> Solicitar Cotizaci&oacute;n
+                    </a>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Product Grid -->
+        <div class="flex-1">
+            <div id="products-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-6">
+                <!-- Cargado din&aacute;micamente -->
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-white py-12 border-t border-gray-800 mt-8">
+    <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+                <img src="assets/NR LOGO TRANSP.png" alt="NoviRepuestos" class="h-12 w-auto mb-4">
+                <p class="text-gray-400 text-sm">Repuestos para carga pesada que mantienen tu flota en marcha.</p>
+            </div>
+            <div>
+                <h4 class="font-bold text-lg mb-4 text-primary">Navegaci&oacute;n</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a class="hover:text-white transition" href="index.html">Inicio</a></li>
+                    <li><a class="hover:text-white transition" href="nosotros.html">Nosotros</a></li>
+                    <li><a class="hover:text-white transition" href="catalogo.html">Cat&aacute;logo</a></li>
+                    <li><a class="hover:text-white transition" href="contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-lg mb-4 text-primary">Categor&iacute;as</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a class="hover:text-white transition" href="catalogo.html">Plataformas</a></li>
+                    <li><a class="hover:text-white transition" href="catalogo.html">Ejes</a></li>
+                    <li><a class="hover:text-white transition" href="catalogo.html">Suspensi&oacute;n</a></li>
+                    <li><a class="hover:text-white transition" href="catalogo.html">Frenos &amp; Aros</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-lg mb-4 text-primary">Contacto Comercial</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">chat</span><a href="https://api.whatsapp.com/send/?phone=%2B593987523946&text&app_absent=0" target="_blank" class="hover:text-white">+593 98 752 3946</a></li>
+                    <li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">chat</span><a href="https://api.whatsapp.com/send/?phone=%2B593984062784&text&app_absent=0" target="_blank" class="hover:text-white">+593 98 406 2784</a></li>
+                    <li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">email</span> plataforma1@novirepuestos.com</li>
+                    <li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">schedule</span> Lun&ndash;Vie 8:00&ndash;17:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500 text-sm">
+            <span>&copy; 2025 NoviRepuestos. Todos los derechos reservados.</span>
+        </div>
+    </div>
+</footer>
+
+<script src="productos.js"></script>
+<script src="catalogo-new.js"></script>
+<script>
+    document.getElementById('mobile-menu-btn')?.addEventListener('click', function(){ document.getElementById('mobile-menu').classList.toggle('hidden'); });
+    document.getElementById('toggle-filters')?.addEventListener('click', function(){ document.getElementById('filters-panel').classList.toggle('hidden'); });
+</script>
+</body>
+</html>

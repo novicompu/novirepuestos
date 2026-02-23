@@ -1,0 +1,330 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NoviRepuestos - Nosotros</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+        darkMode:"class",
+        theme:{ extend:{ colors:{ primary:"#FACC15", secondary:"#D97706", "background-light":"#F9FAFB", "background-dark":"#111827", "surface-dark":"#1F2937" }, fontFamily:{sans:["Inter","sans-serif"]} } }
+    };
+</script>
+<style>
+    body { font-family: "Inter", sans-serif; }
+    .timeline-line::before { content:""; position:absolute; left:50%; transform:translateX(-50%); top:0; bottom:0; width:2px; background-color:#e5e7eb; }
+    .dark .timeline-line::before { background-color:#374151; }
+</style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-200 transition-colors duration-300 min-h-screen flex flex-col">
+
+<!-- Header -->
+<header class="bg-white dark:bg-surface-dark shadow-sm border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50">
+    <div class="bg-gray-900 text-gray-300 text-xs py-1.5 px-4 hidden sm:block">
+        <div class="max-w-[1600px] mx-auto flex justify-between items-center">
+            <div class="flex gap-4">
+                <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">phone</span> +593 98 752 3946</span>
+                <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">chat</span> +593 98 406 2784</span>
+            </div>
+            <span class="text-gray-400">Lunes a Viernes 8:00 &ndash; 17:00</span>
+        </div>
+    </div>
+    <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16 gap-8">
+            <a href="index.html" class="flex-shrink-0 flex items-center gap-3">
+                <img src="assets/NR LOGO TRANSP.png" alt="NoviRepuestos" class="h-10 w-auto">
+                <img src="assets/NOVI REPUESTOS B.png" alt="NoviRepuestos" class="h-7 w-auto dark:invert">
+            </a>
+            <nav class="hidden md:flex gap-8 items-center font-medium text-sm text-gray-600 dark:text-gray-300">
+                <a class="hover:text-primary transition" href="index.html">Inicio</a>
+                <a class="text-primary font-bold" href="nosotros.html">Nosotros</a>
+                <a class="hover:text-primary transition" href="catalogo.html">Cat&aacute;logo</a>
+                <a class="hover:text-primary transition" href="contacto.html">Contacto</a>
+            </nav>
+            <div class="flex items-center gap-3">
+                <a class="bg-primary text-gray-900 px-4 py-2 rounded-md text-sm font-bold shadow-sm hover:bg-yellow-300 transition flex items-center gap-2"
+                   href="https://api.whatsapp.com/send/?phone=%2B593984062784&text=Hola,%20necesito%20informaci%C3%B3n%20sobre%20repuestos&app_absent=0" target="_blank">
+                    <span class="material-symbols-outlined text-[18px]">chat</span>
+                    <span class="hidden sm:inline">Contactar Asesor</span>
+                </a>
+                <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-600 dark:text-gray-300"><span class="material-symbols-outlined">menu</span></button>
+            </div>
+        </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-surface-dark border-t border-gray-200 dark:border-gray-700 px-4 py-4 space-y-3">
+        <a class="block text-gray-700 dark:text-gray-300 hover:text-primary" href="index.html">Inicio</a>
+        <a class="block font-semibold text-primary" href="nosotros.html">Nosotros</a>
+        <a class="block text-gray-700 dark:text-gray-300 hover:text-primary" href="catalogo.html">Cat&aacute;logo</a>
+        <a class="block text-gray-700 dark:text-gray-300 hover:text-primary" href="contacto.html">Contacto</a>
+    </div>
+</header>
+
+<main class="flex-grow w-full">
+
+<!-- Hero Split -->
+<section class="bg-white dark:bg-surface-dark overflow-hidden">
+    <div class="max-w-[1600px] mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 min-h-[520px]">
+            <div class="flex flex-col justify-center p-8 lg:p-24 order-2 lg:order-1">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-300 text-xs font-bold uppercase tracking-wider mb-6 w-fit">
+                    <span class="w-2 h-2 rounded-full bg-yellow-500"></span>
+                    Sobre Nosotros
+                </div>
+                <h1 class="text-4xl lg:text-5xl font-extrabold text-gray-900 dark:text-white leading-tight mb-6">
+                    Comprometidos con el <span class="text-primary">transporte pesado</span> ecuatoriano
+                </h1>
+                <p class="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed max-w-xl">
+                    En 2022 naci&oacute; NoviRepuestos con la visi&oacute;n de cubrir las necesidades de las empresas de transporte pesado en Ecuador. Desde entonces, hemos crecido con base en la calidad, el apoyo t&eacute;cnico especializado y el compromiso con nuestros clientes.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a class="bg-gray-900 dark:bg-white text-white dark:text-gray-900 px-8 py-3 rounded-md font-bold hover:opacity-90 transition" href="catalogo.html">
+                        Ver Cat&aacute;logo
+                    </a>
+                    <a class="border border-gray-300 dark:border-gray-600 px-8 py-3 rounded-md font-bold text-gray-700 dark:text-white hover:border-primary hover:text-primary transition flex items-center gap-2" href="contacto.html">
+                        <span class="material-symbols-outlined">support_agent</span>
+                        Contactar un Asesor
+                    </a>
+                </div>
+            </div>
+            <div class="relative h-[350px] lg:h-auto order-1 lg:order-2 bg-gray-900">
+                <img alt="NoviRepuestos - Repuestos para carga pesada" class="absolute inset-0 w-full h-full object-cover opacity-80" src="assets/edw1.png">
+                <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent lg:bg-gradient-to-l"></div>
+                <div class="absolute bottom-0 left-0 bg-white dark:bg-surface-dark p-6 lg:p-10 max-w-xs z-20 rounded-tr-3xl">
+                    <div class="flex items-end gap-4">
+                        <span class="text-5xl font-black text-primary">2022</span>
+                        <div class="text-sm font-medium text-gray-600 dark:text-gray-400 pb-2">
+                            Fundaci&oacute;n de<br/>NoviRepuestos
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Historia Timeline -->
+<section class="py-20 bg-background-light dark:bg-background-dark">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Nuestra Historia</h2>
+            <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                Una trayectoria marcada por el compromiso constante con nuestros clientes y el sector transportista.
+            </p>
+        </div>
+        <div class="relative timeline-line space-y-12">
+            <div class="flex justify-between items-center w-full group">
+                <div class="order-1 w-5/12 text-right pr-8 hidden md:block">
+                    <h3 class="font-bold text-2xl text-gray-900 dark:text-white">Fundaci&oacute;n</h3>
+                    <p class="text-sm text-gray-500 mt-1">Inicio en Ecuador</p>
+                </div>
+                <div class="z-20 flex items-center order-1 bg-white dark:bg-gray-800 shadow-xl w-12 h-12 rounded-full border-4 border-primary flex-shrink-0">
+                    <h1 class="mx-auto font-bold text-sm text-gray-900 dark:text-white">2022</h1>
+                </div>
+                <div class="order-1 w-full md:w-5/12 pl-0 md:pl-8">
+                    <div class="bg-white dark:bg-surface-dark p-6 rounded-lg shadow-md border border-gray-100 dark:border-gray-700 hover:border-primary/50 transition duration-300">
+                        <div class="md:hidden mb-2"><h3 class="font-bold text-xl text-gray-900 dark:text-white">Fundaci&oacute;n</h3><p class="text-xs text-primary font-bold">2022</p></div>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+                            NoviRepuestos nace con la visi&oacute;n de cubrir las necesidades de las empresas de transporte pesado en Ecuador, ofreciendo repuestos certificados y asesor&iacute;a t&eacute;cnica especializada.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-between flex-row-reverse items-center w-full group">
+                <div class="order-1 w-5/12 text-left pl-8 hidden md:block">
+                    <h3 class="font-bold text-2xl text-gray-900 dark:text-white">Crecimiento</h3>
+                    <p class="text-sm text-gray-500 mt-1">Expansi&oacute;n del cat&aacute;logo</p>
+                </div>
+                <div class="z-20 flex items-center order-1 bg-white dark:bg-gray-800 shadow-xl w-12 h-12 rounded-full border-4 border-primary flex-shrink-0">
+                    <h1 class="mx-auto font-bold text-sm text-gray-900 dark:text-white">2023</h1>
+                </div>
+                <div class="order-1 w-full md:w-5/12 pr-0 md:pr-8">
+                    <div class="bg-white dark:bg-surface-dark p-6 rounded-lg shadow-md border border-gray-100 dark:border-gray-700 hover:border-primary/50 transition duration-300">
+                        <div class="md:hidden mb-2"><h3 class="font-bold text-xl text-gray-900 dark:text-white">Crecimiento</h3><p class="text-xs text-primary font-bold">2023</p></div>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+                            Ampliamos nuestro cat&aacute;logo incorporando plataformas de 3 ejes, suspensiones mec&aacute;nicas, aros cromados y accesorios de alta demanda para el mercado nacional.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-between items-center w-full group">
+                <div class="order-1 w-5/12 text-right pr-8 hidden md:block">
+                    <h3 class="font-bold text-2xl text-gray-900 dark:text-white">Cobertura Nacional</h3>
+                    <p class="text-sm text-gray-500 mt-1">Despacho a todo Ecuador</p>
+                </div>
+                <div class="z-20 flex items-center order-1 bg-white dark:bg-gray-800 shadow-xl w-12 h-12 rounded-full border-4 border-primary flex-shrink-0">
+                    <h1 class="mx-auto font-bold text-sm text-gray-900 dark:text-white">2024</h1>
+                </div>
+                <div class="order-1 w-full md:w-5/12 pl-0 md:pl-8">
+                    <div class="bg-white dark:bg-surface-dark p-6 rounded-lg shadow-md border border-gray-100 dark:border-gray-700 hover:border-primary/50 transition duration-300">
+                        <div class="md:hidden mb-2"><h3 class="font-bold text-xl text-gray-900 dark:text-white">Cobertura Nacional</h3><p class="text-xs text-primary font-bold">2024</p></div>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+                            Consolidamos alianzas log&iacute;sticas con Servientrega y Tramaco para garantizar env&iacute;os r&aacute;pidos y seguros a todas las provincias del Ecuador.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Misión, Visión, Valores -->
+<section class="py-20 bg-white dark:bg-surface-dark border-t border-gray-100 dark:border-gray-800">
+    <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl border-l-4 border-primary shadow-sm hover:shadow-lg transition-shadow duration-300">
+                <div class="w-14 h-14 bg-white dark:bg-gray-700 rounded-xl flex items-center justify-center mb-6 shadow-sm text-secondary">
+                    <span class="material-symbols-outlined text-3xl">rocket_launch</span>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Nuestra Misi&oacute;n</h3>
+                <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                    Suministrar repuestos y plataformas especializadas para carga pesada con est&aacute;ndares internacionales, garantizando la operatividad continua de tu flota mediante productos confiables, asesor&iacute;a t&eacute;cnica y atenci&oacute;n personalizada.
+                </p>
+            </div>
+            <div class="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl border-l-4 border-gray-900 dark:border-white shadow-sm hover:shadow-lg transition-shadow duration-300">
+                <div class="w-14 h-14 bg-white dark:bg-gray-700 rounded-xl flex items-center justify-center mb-6 shadow-sm text-gray-900 dark:text-white">
+                    <span class="material-symbols-outlined text-3xl">visibility</span>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Nuestra Visi&oacute;n</h3>
+                <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                    Ser la empresa l&iacute;der en repuestos para transporte pesado a nivel nacional, reconocida por innovaci&oacute;n, calidad y excelencia en el servicio.
+                </p>
+            </div>
+            <div class="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl border-l-4 border-secondary shadow-sm hover:shadow-lg transition-shadow duration-300 md:col-span-2 lg:col-span-1">
+                <div class="w-14 h-14 bg-white dark:bg-gray-700 rounded-xl flex items-center justify-center mb-6 shadow-sm text-secondary">
+                    <span class="material-symbols-outlined text-3xl">verified</span>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Nuestros Valores</h3>
+                <ul class="space-y-3 text-gray-600 dark:text-gray-300">
+                    <li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary text-xl">check_circle</span> Calidad &mdash; Componentes certificados</li>
+                    <li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary text-xl">check_circle</span> Confianza &mdash; Transparencia en cada venta</li>
+                    <li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary text-xl">check_circle</span> Experiencia &mdash; Asesor&iacute;a respaldada por expertos</li>
+                    <li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary text-xl">check_circle</span> Eficiencia &mdash; Entregas oportunas y &aacute;giles</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Equipo -->
+<section class="py-20 bg-background-light dark:bg-background-dark">
+    <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <span class="text-secondary font-bold tracking-wider uppercase text-sm">Equipo Humano</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mt-2 mb-6">Expertos a su Servicio</h2>
+            <p class="text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+                Contamos con t&eacute;cnicos especializados en asesor&iacute;a e importaci&oacute;n de ejes, suspensi&oacute;n y plataformas, disponibles para resolver cualquier necesidad o inconveniente con tu maquinaria y accesorios.
+            </p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-2xl mx-auto">
+            <div class="group bg-white dark:bg-surface-dark rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700">
+                <div class="h-48 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-[90px] text-gray-600">person</span>
+                </div>
+                <div class="p-6 border-t-4 border-primary">
+                    <h4 class="text-lg font-bold text-gray-900 dark:text-white">Ing. Sebastian Ontaneda O.</h4>
+                    <p class="text-sm text-secondary font-medium mb-3">Asesor Comercial</p>
+                    <div class="flex flex-col gap-2">
+                        <a href="https://api.whatsapp.com/send/?phone=%2B593987523946&text=Hola,%20necesito%20informaci%C3%B3n%20sobre%20repuestos&app_absent=0" target="_blank" class="text-sm text-green-600 hover:text-green-700 flex items-center gap-2 font-medium">
+                            <span class="material-symbols-outlined text-[16px]">chat</span> +593 98 752 3946
+                        </a>
+                        <a href="mailto:plataforma1@novirepuestos.com" class="text-sm text-gray-500 hover:text-primary flex items-center gap-2">
+                            <span class="material-symbols-outlined text-[16px]">email</span> plataforma1@novirepuestos.com
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="group bg-white dark:bg-surface-dark rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700">
+                <div class="h-48 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-[90px] text-gray-600">person</span>
+                </div>
+                <div class="p-6 border-t-4 border-gray-900 dark:border-white">
+                    <h4 class="text-lg font-bold text-gray-900 dark:text-white">Mag. Santiago Robles</h4>
+                    <p class="text-sm text-secondary font-medium mb-3">Asesor Comercial</p>
+                    <div class="flex flex-col gap-2">
+                        <a href="https://api.whatsapp.com/send/?phone=%2B593984062784&text=Hola,%20necesito%20informaci%C3%B3n%20sobre%20repuestos&app_absent=0" target="_blank" class="text-sm text-green-600 hover:text-green-700 flex items-center gap-2 font-medium">
+                            <span class="material-symbols-outlined text-[16px]">chat</span> +593 98 406 2784
+                        </a>
+                        <a href="mailto:plataforma2@novirepuestos.com" class="text-sm text-gray-500 hover:text-primary flex items-center gap-2">
+                            <span class="material-symbols-outlined text-[16px]">email</span> plataforma2@novirepuestos.com
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Cobertura -->
+        <div class="mt-16 bg-white dark:bg-surface-dark rounded-2xl p-8 shadow-md border border-gray-100 dark:border-gray-700 max-w-2xl mx-auto text-center">
+            <span class="material-symbols-outlined text-4xl text-secondary mb-3 block">map</span>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Cobertura Nacional</h3>
+            <p class="text-gray-600 dark:text-gray-400">Enviamos a todo Ecuador, con aliados log&iacute;sticos estrat&eacute;gicos para plazos confiables. Trabajamos con Servientrega, Tramaco o el Courier de tu confianza.</p>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="py-16 bg-primary">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6">&iquest;Listo para trabajar con nosotros?</h2>
+        <p class="text-gray-900 text-lg mb-8 font-medium">Cont&aacute;ctenos y descubra por qu&eacute; somos el aliado preferido del transporte pesado en Ecuador.</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a class="bg-gray-900 text-white px-8 py-3 rounded-md font-bold hover:bg-gray-800 transition shadow-lg" href="contacto.html">Contactar Ventas</a>
+            <a class="bg-white text-gray-900 px-8 py-3 rounded-md font-bold hover:bg-gray-50 transition shadow-lg" href="catalogo.html">Ver Cat&aacute;logo</a>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-white py-12 border-t border-gray-800">
+    <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+                <img src="assets/NR LOGO TRANSP.png" alt="NoviRepuestos" class="h-12 w-auto mb-4">
+                <p class="text-gray-400 text-sm">Repuestos para carga pesada que mantienen tu flota en marcha.</p>
+            </div>
+            <div>
+                <h4 class="font-bold text-lg mb-4 text-primary">Navegaci&oacute;n</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a class="hover:text-white transition" href="index.html">Inicio</a></li>
+                    <li><a class="hover:text-white transition" href="nosotros.html">Nosotros</a></li>
+                    <li><a class="hover:text-white transition" href="catalogo.html">Cat&aacute;logo</a></li>
+                    <li><a class="hover:text-white transition" href="contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-lg mb-4 text-primary">Categor&iacute;as</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a class="hover:text-white transition" href="catalogo.html">Plataformas</a></li>
+                    <li><a class="hover:text-white transition" href="catalogo.html">Ejes</a></li>
+                    <li><a class="hover:text-white transition" href="catalogo.html">Suspensi&oacute;n</a></li>
+                    <li><a class="hover:text-white transition" href="catalogo.html">Frenos &amp; Aros</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-lg mb-4 text-primary">Contacto Comercial</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">chat</span><a href="https://api.whatsapp.com/send/?phone=%2B593987523946&text&app_absent=0" target="_blank" class="hover:text-white">+593 98 752 3946</a></li>
+                    <li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">chat</span><a href="https://api.whatsapp.com/send/?phone=%2B593984062784&text&app_absent=0" target="_blank" class="hover:text-white">+593 98 406 2784</a></li>
+                    <li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">email</span> plataforma1@novirepuestos.com</li>
+                    <li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">schedule</span> Lun&ndash;Vie 8:00&ndash;17:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500 text-sm flex flex-col md:flex-row justify-between items-center">
+            <span>&copy; 2025 NoviRepuestos. Todos los derechos reservados.</span>
+            <div class="flex gap-4 mt-4 md:mt-0">
+                <span class="material-symbols-outlined text-gray-600">credit_card</span>
+                <span class="material-symbols-outlined text-gray-600">account_balance</span>
+                <span class="material-symbols-outlined text-gray-600">local_shipping</span>
+            </div>
+        </div>
+    </div>
+</footer>
+<script>
+    document.getElementById('mobile-menu-btn')?.addEventListener('click', function(){ document.getElementById('mobile-menu').classList.toggle('hidden'); });
+</script>
+</body>
+</html>
