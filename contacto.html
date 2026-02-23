@@ -295,25 +295,46 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     document.getElementById('mobile-menu-btn')?.addEventListener('click', function(){ document.getElementById('mobile-menu').classList.toggle('hidden'); });
 
     // ── Facebook Pixel: Coincidencias Avanzadas ──────────────────────────────
-    // Cuando el usuario completa email o teléfono, se actualizan los datos de
-    // coincidencia avanzada (Advanced Matching) para mejorar la atribución.
+    // Envía email, teléfono y nombre al Pixel para mejorar la tasa de
+    // coincidencia (Advanced Matching). Facebook hace el hash SHA-256
+    // antes de transmitir — nunca viaja en texto plano.
     (function() {
         function normalizarEmail(v) { return v.trim().toLowerCase(); }
-        function normalizarTelefono(v) { return v.replace(/[\s\-\(\)]/g, ''); }
+        function normalizarTelefono(v) { return v.replace(/[\s\-\(\)\+]/g, ''); }
+        function normalizarNombre(v) { return v.trim().toLowerCase(); }
 
         function actualizarAM() {
             if (typeof fbq === 'undefined') return;
-            var emVal = (document.getElementById('contactEmail') || {}).value || '';
-            var phVal = (document.getElementById('contactPhone') || {}).value || '';
-            var datos = {};
-            if (emVal && emVal.indexOf('@') > -1) datos.em = normalizarEmail(emVal);
-            if (phVal && phVal.replace(/\D/g, '').length >= 7) datos.ph = normalizarTelefono(phVal);
-            if (Object.keys(datos).length > 0) {
+            var emVal  = (document.getElementById('contactEmail') || {}).value || '';
+            var phVal  = (document.getElementById('contactPhone') || {}).value || '';
+            var nmVal  = (document.getElementById('contactName')  || {}).value || '';
+            var datos  = {};
+
+            // Email
+            if (emVal && emVal.indexOf('@') > -1) {
+                datos.em = normalizarEmail(emVal);
+            }
+            // Teléfono (mínimo 7 dígitos)
+            if (phVal && phVal.replace(/\D/g, '').length >= 7) {
+                datos.ph = normalizarTelefono(phVal);
+            }
+            // Nombre → dividir en fn (primer nombre) y ln (apellido/s)
+            if (nmVal.trim().length > 1) {
+                var partes = nmVal.trim().split(/\s+/);
+                datos.fn = normalizarNombre(partes[0]);
+                if (partes.length > 1) {
+                    datos.ln = normalizarNombre(partes.slice(1).join(' '));
+                }
+            }
+            // País por defecto Ecuador (mejora atribución geográfica)
+            datos.country = 'ec';
+
+            if (Object.keys(datos).length > 1) { // al menos 2 campos para mayor precisión
                 fbq('init', '26537422319176155', datos);
             }
         }
 
-        ['contactEmail', 'contactPhone'].forEach(function(id) {
+        ['contactEmail', 'contactPhone', 'contactName'].forEach(function(id) {
             var el = document.getElementById(id);
             if (el) el.addEventListener('blur', actualizarAM);
         });
