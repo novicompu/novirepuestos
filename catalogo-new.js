@@ -90,8 +90,11 @@ var categoryLabels = {
             + '<p class="text-xl font-black text-gray-900 dark:text-white">' + price + '</p></div>'
             + '<span class="text-xs text-green-600 bg-green-100 dark:bg-green-900/50 dark:text-green-300 px-2 py-0.5 rounded-full font-semibold">En Stock</span>'
             + '</div>'
-            + '<a href="' + waLink + '" target="_blank" class="w-full bg-white dark:bg-transparent border-2 border-green-500 text-green-600 hover:bg-green-600 hover:text-white font-bold py-2.5 px-3 rounded-lg flex items-center justify-center gap-2 text-sm transition-all duration-200 group-hover:bg-green-600 group-hover:text-white">'
+            + '<a href="' + waLink + '" target="_blank" data-product-id="' + p.id + '" data-product-name="' + p.nombre + '" data-product-price="' + p.precio + '" data-product-cat="' + (categoryLabels[p.categoria] || p.categoria) + '" class="wa-catalog-btn w-full bg-white dark:bg-transparent border-2 border-green-500 text-green-600 hover:bg-green-600 hover:text-white font-bold py-2.5 px-3 rounded-lg flex items-center justify-center gap-2 text-sm transition-all duration-200 group-hover:bg-green-600 group-hover:text-white">'
             + '<span class="material-symbols-outlined text-[18px]">chat</span>Cotizar por WhatsApp'
+            + '</a>'
+            + '<a href="producto.html?id=' + p.id + '&slug=' + (p.slug || '') + '" data-product-id="' + p.id + '" data-product-name="' + p.nombre + '" data-product-price="' + p.precio + '" data-product-cat="' + (categoryLabels[p.categoria] || p.categoria) + '" class="detail-catalog-btn mt-2 w-full bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-primary hover:text-gray-900 font-semibold py-2 px-3 rounded-lg flex items-center justify-center gap-2 text-sm transition-all duration-200">'
+            + '<span class="material-symbols-outlined text-[16px]">open_in_new</span>Ver detalle del producto'
             + '</a>'
             + '</div>'
             + '</div>'
@@ -233,6 +236,74 @@ var categoryLabels = {
                 var hidden = parseInt(btn.dataset && btn.dataset.hidden) || parseInt(label.textContent.match(/\d+/)?.[0]) || 0;
                 label.textContent = isOpen ? 'Ver ' + hidden + ' especificaciones más' : 'Ocultar';
                 if (!btn.dataset.hidden) btn.dataset.hidden = hidden;
+            });
+        });
+
+        // GTM + Pixel: WhatsApp desde catálogo
+        grid.querySelectorAll('.wa-catalog-btn').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var id = btn.dataset.productId;
+                var name = btn.dataset.productName;
+                var price = parseFloat(btn.dataset.productPrice);
+                var cat = btn.dataset.productCat;
+                window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push({
+                    event: 'generate_lead',
+                    lead_source: 'whatsapp',
+                    lead_type: 'catalog_inquiry',
+                    product_id: 'NOVI-' + id,
+                    product_name: name,
+                    product_category: cat,
+                    product_price: price
+                });
+                if (typeof fbq !== 'undefined') {
+                    fbq('track', 'Lead', {
+                        content_ids: ['NOVI-' + id],
+                        content_name: name,
+                        content_category: cat,
+                        value: price,
+                        currency: 'USD'
+                    });
+                }
+            });
+        });
+
+        // GTM + Pixel: clic en "Ver detalle del producto"
+        grid.querySelectorAll('.detail-catalog-btn').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var id = btn.dataset.productId;
+                var name = btn.dataset.productName;
+                var price = parseFloat(btn.dataset.productPrice);
+                var cat = btn.dataset.productCat;
+                window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push({ ecommerce: null });
+                window.dataLayer.push({
+                    event: 'select_item',
+                    ecommerce: {
+                        currency: 'USD',
+                        items: [{
+                            item_id: 'NOVI-' + id,
+                            item_name: name,
+                            item_category: cat,
+                            price: price,
+                            quantity: 1
+                        }]
+                    },
+                    product_id: 'NOVI-' + id,
+                    product_name: name,
+                    product_category: cat,
+                    product_price: price
+                });
+                if (typeof fbq !== 'undefined') {
+                    fbq('track', 'ViewContent', {
+                        content_ids: ['NOVI-' + id],
+                        content_name: name,
+                        content_category: cat,
+                        content_type: 'product',
+                        value: price,
+                        currency: 'USD'
+                    });
+                }
             });
         });
     }

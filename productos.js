@@ -2,6 +2,7 @@
 const productos = [
     {
         id: 1,
+        slug: 'plataforma-3-ejes',
         categoria: 'plataforma',
         nombre: 'PLATAFORMA 3 EJES',
         descripcion: 'Plataforma especializada para transporte de carga pesada con capacidad de hasta 40 toneladas.',
@@ -41,6 +42,7 @@ const productos = [
     },
     {
         id: 2,
+        slug: 'eje-americano-13t-5',
         categoria: 'ejes',
         nombre: 'EJE AMERICANO 13 T (5″)',
         descripcion: 'Eje tipo americano de 13 toneladas, con perfil de 127 × 127 mm (5″), robusto y confiable. Su PCD de 335 mm lo hace compatible con una amplia variedad de configuraciones de remolque.',
@@ -58,6 +60,7 @@ const productos = [
     },
     {
         id: 3,
+        slug: 'eje-americano-13t-6',
         categoria: 'ejes',
         nombre: 'EJE AMERICANO 13 T (6″)',
         descripcion: 'Eje tipo americano de 13 toneladas, con perfil de 150 × 150 mm (6″), diseñado para proporcionar soporte resistente y estabilidad en la suspensión, ideal para tráileres y cargas pesadas.',
@@ -75,6 +78,7 @@ const productos = [
     },
     {
         id: 4,
+        slug: 'ballestas',
         categoria: 'suspension',
         nombre: 'BALLESTAS',
         descripcion: 'Juego de ballestas para suspensión mecánica de tráiler; comprende 10 hojas de 90 × 12 mm, con 5 principales. Proporciona soporte resistente y estabilidad en la suspensión, ideal para cargas pesadas y tráileres de alto rendimiento.',
@@ -88,6 +92,7 @@ const productos = [
     },
     {
         id: 5,
+        slug: 'pulmon-doble-accion-t3030',
         categoria: 'frenos',
         nombre: 'PULMÓN DOBLE ACCIÓN T3030',
         descripcion: 'Cámara de freno neumática modelo T3030 para sistemas de frenado en remolques. Diseñada para ofrecer una respuesta rápida y eficiente, contribuyendo a la seguridad del vehículo.',
@@ -104,6 +109,7 @@ const productos = [
     },
     {
         id: 6,
+        slug: 'bloqueo-de-giro',
         categoria: 'accesorios',
         nombre: 'BLOQUEO DE GIRO',
         descripcion: 'Sistema de bloqueo de giro ("turn lock") para bastidores de tráiler, que impide el giro no deseado del eje o plataforma. Fabricado para brindar seguridad adicional y estabilidad estructural.',
@@ -120,6 +126,7 @@ const productos = [
     },
     {
         id: 7,
+        slug: 'patin-de-apoyo',
         categoria: 'accesorios',
         nombre: 'PATÍN DE APOYO',
         descripcion: 'Patín de apoyo robusto para tráileres (landing gear), diseñado para proporcionar estabilidad al remolque cuando está estacionado o desacoplado. Construcción resistente, de fácil operación y con gran capacidad de carga.',
@@ -136,6 +143,7 @@ const productos = [
     },
     {
         id: 8,
+        slug: 'eje-aleman-12t',
         categoria: 'ejes',
         nombre: 'EJE ALEMÁN 12 T',
         descripcion: 'Eje tipo alemán de 12 toneladas, ideal para quienes buscan precisión europea en el sistema de suspensión.',
@@ -152,6 +160,7 @@ const productos = [
     },
     {
         id: 9,
+        slug: 'eje-aleman-14t',
         categoria: 'ejes',
         nombre: 'EJE ALEMÁN 14 T',
         descripcion: 'Eje tipo alemán de 14 toneladas, preparado para cargas pesadas, equipado con robustos rodamientos y freno amplio. Ideal para aplicaciones industriales exigentes.',
@@ -168,6 +177,7 @@ const productos = [
     },
     {
         id: 10,
+        slug: 'king-pin-atornillado-2',
         categoria: 'accesorios',
         nombre: 'KING PIN ATORNILLADO 2″',
         descripcion: 'Diseñado para garantizar conexión segura y duradera entre el remolque y la tractora. Fabricado en acero de aleación forjado, soporta cargas exigentes y asegura estabilidad en maniobras y transporte pesado.',
@@ -184,6 +194,7 @@ const productos = [
     },
     {
         id: 11,
+        slug: 'arcos-cromados',
         categoria: 'aros',
         nombre: 'ARCOS CROMADOS',
         descripcion: 'Capaces de soportar hasta 3.350 kg por rueda. Garantizan durabilidad, resistencia y estética premium, ideales para ejes de semirremolques y plataformas de servicio.',
@@ -200,6 +211,7 @@ const productos = [
     },
     {
         id: 12,
+        slug: 'arcos-de-acero',
         categoria: 'aros',
         nombre: 'ARCOS DE ACERO',
         descripcion: 'Fabricados para camiones y semirremolques de carga pesada, acero de alta resistencia y acabados anticorrosivos. Garantizan durabilidad y seguridad en cada viaje. Compatibles para ejes de 5″ y 6″, soportan hasta 3.350 kg por unidad.',
@@ -215,6 +227,7 @@ const productos = [
     },
     {
         id: 13,
+        slug: 'suspension-mecanica-2-ejes',
         categoria: 'suspension',
         nombre: 'SUSPENSIÓN DE EJES MECÁNICA (2 EJES)',
         descripcion: 'Sistema completo de suspensión mecánica con ballestas y componentes heavy-duty para semirremolques de 2 ejes.',
@@ -235,6 +248,7 @@ const productos = [
     },
     {
         id: 14,
+        slug: 'suspension-mecanica-3-ejes',
         categoria: 'suspension',
         nombre: 'SUSPENSIÓN DE EJES MECÁNICA (3 EJES)',
         descripcion: 'Sistema completo de suspensión mecánica con ballestas y componentes heavy-duty para semirremolques de 3 ejes.',
