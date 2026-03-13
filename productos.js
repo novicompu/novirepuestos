@@ -266,6 +266,114 @@ const productos = [
             'Bujes/silentblocks: alta resistencia para reducir vibración y desgaste',
             'Producto de origen Americano y Europeo'
         ]
+    },
+    {
+        id: 15,
+        slug: 'llanta-helloway-h556',
+        categoria: 'llantas',
+        nombre: 'LLANTA HELLOWAY H556',
+        descripcion: 'Llanta de maquinaria para servicio fuera de carretera, con alta tracción y vida útil extendida.',
+        precio: 0,
+        imagen: 'assets/H556.png',
+        especificaciones: [
+            'Marca: Helloway',
+            'Modelo: H556',
+            'Lonas: 18',
+            'Tamaño: 295/80R22.5',
+            'Índice de carga: 152/149',
+            'Índice de velocidad: F',
+            'Profundidad de labrado: 22.0 mm',
+            'Ancho de sección: 298 mm',
+            'Diámetro total: 1055 mm',
+            'Presión: 900 kPa',
+            'Alta tracción para uso fuera de carretera',
+            'Durabilidad y vida útil extendida'
+        ]
+    },
+    {
+        id: 16,
+        slug: 'llanta-helloway-h557',
+        categoria: 'llantas',
+        nombre: 'LLANTA HELLOWAY H557',
+        descripcion: 'Llanta orientada a mayor kilometraje y mejor eficiencia de combustible.',
+        precio: 0,
+        imagen: 'assets/H557.png',
+        especificaciones: [
+            'Marca: Helloway',
+            'Modelo: H557',
+            'Lonas: 18',
+            'Tamaño: 295/80R22.5',
+            'Índice de carga: 152/149',
+            'Índice de velocidad: M',
+            'Profundidad de labrado: 18.0 mm',
+            'Ancho de sección: 298 mm',
+            'Diámetro total: 1055 mm',
+            'Presión: 900 kPa',
+            'Mayor kilometraje',
+            'Menor consumo de combustible'
+        ]
+    },
+    {
+        id: 17,
+        slug: 'llanta-helloway-h528',
+        categoria: 'llantas',
+        nombre: 'LLANTA HELLOWAY H528',
+        descripcion: 'Llanta con tracción superior y desempeño para mayor kilometraje.',
+        precio: 0,
+        imagen: 'assets/H528.png',
+        especificaciones: [
+            'Marca: Helloway',
+            'Modelo: H528',
+            'Lonas: 18',
+            'Tamaño: 295/80R22.5',
+            'Índice de carga: 152/149',
+            'Índice de velocidad: M',
+            'Profundidad de labrado: 18.0 mm',
+            'Ancho de sección: 298 mm',
+            'Diámetro total: 1055 mm',
+            'Presión: 900 kPa',
+            'Tracción superior',
+            'Mayor kilometraje'
+        ]
+    },
+    {
+        id: 18,
+        slug: 'llanta-helloway-h578',
+        categoria: 'llantas',
+        nombre: 'LLANTA HELLOWAY H578',
+        descripcion: 'Llanta con resistencia al desgaste irregular, mayor kilometraje y mejor manejo.',
+        precio: 0,
+        imagen: 'assets/H578.png',
+        especificaciones: [
+            'Marca: Helloway',
+            'Modelo: H578',
+            'Lonas: 20',
+            'Tamaño: 395/80R22.5',
+            'Índice de carga: 157/154',
+            'Índice de velocidad: L',
+            'Profundidad de labrado: 15 mm',
+            'Ancho de sección: 312 mm',
+            'Diámetro total: 1076 mm',
+            'Presión: 850 kPa',
+            'Resiste el desgaste irregular',
+            'Mayor kilometraje',
+            'Mejor manejo'
+        ]
+    },
+    {
+        id: 19,
+        slug: 'llanta-helloway-h517-plus',
+        categoria: 'llantas',
+        nombre: 'LLANTA HELLOWAY H517+',
+        descripcion: 'Llanta Helloway H517+ para operación de maquinaria y trabajo pesado.',
+        precio: 0,
+        imagen: 'assets/H517plus_.png',
+        especificaciones: [
+            'Marca: Helloway',
+            'Modelo: H517+',
+            'Aplicación: maquinaria y carga pesada',
+            'Consulte disponibilidad y ficha técnica completa'
+        ]
     }
 ];
 
@@ -276,6 +384,7 @@ const categorias = {
     suspension: 'Suspensión',
     frenos: 'Frenos',
     aros: 'Aros',
+    llantas: 'Llantas',
     accesorios: 'Accesorios'
 };
 

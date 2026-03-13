@@ -333,7 +333,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         var waMsg = encodeURIComponent('Hola, me interesa el producto: ' + p.nombre + '. ¿Podrían cotizarme?');
         var waLink = 'https://api.whatsapp.com/send/?phone=%2B593984062784&text=' + waMsg + '&app_absent=0';
         var catLabel = categoryLabels[p.categoria] || p.categoria;
-        var price = formatPrice(p.precio);
+        var hasPrice = typeof p.precio === 'number' && p.precio > 0;
+        var price = hasPrice ? formatPrice(p.precio) : 'Consultar';
+        var priceTitle = hasPrice ? 'Precio referencial (sin IVA)' : 'Precio a consultar';
+        var priceNote = hasPrice
+            ? '<p class="text-xs text-yellow-600 dark:text-yellow-400 mt-1.5 flex items-center gap-1"><span class="material-symbols-outlined text-[13px]">info</span> Precio referencial. Contáctanos para cotización final con IVA.</p>'
+            : '';
 
         // Galería principal HTML
         var arrowPrev = imgs.length > 1
@@ -415,9 +420,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
             // Precio
             + '<div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-5 mb-6 border border-gray-200 dark:border-gray-700">'
-            + '<p class="text-xs text-gray-400 uppercase tracking-wide font-medium mb-1">Precio referencial (sin IVA)</p>'
+            + '<p class="text-xs text-gray-400 uppercase tracking-wide font-medium mb-1">' + priceTitle + '</p>'
             + '<p class="text-4xl font-black text-gray-900 dark:text-white">' + price + '</p>'
-            + '<p class="text-xs text-yellow-600 dark:text-yellow-400 mt-1.5 flex items-center gap-1"><span class="material-symbols-outlined text-[13px]">info</span> Precio referencial. Contáctanos para cotización final con IVA.</p>'
+            + priceNote
             + '</div>'
 
             // CTAs
@@ -504,7 +509,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         if (!related.length) return;
 
         var cards = related.map(function (p) {
-            var price = formatPrice(p.precio);
+            var hasPrice = typeof p.precio === 'number' && p.precio > 0;
+            var price = hasPrice ? formatPrice(p.precio) : 'Consultar';
             var catLabel = categoryLabels[p.categoria] || p.categoria;
             return '<a href="producto.html?id=' + p.id + '" class="bg-white dark:bg-surface-dark rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-lg transition-all group">'
                 + '<div class="h-40 bg-gray-50 dark:bg-gray-800 flex items-center justify-center p-3">'
@@ -514,7 +520,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 + '<p class="text-[10px] font-bold text-secondary tracking-wider uppercase mb-1">' + catLabel + '</p>'
                 + '<h3 class="font-bold text-gray-900 dark:text-white text-sm leading-tight group-hover:text-primary transition mb-2">' + p.nombre + '</h3>'
                 + '<p class="text-lg font-black text-gray-900 dark:text-white">' + price + '</p>'
-                + '<p class="text-[10px] text-gray-400">sin IVA</p>'
+                + (hasPrice ? '<p class="text-[10px] text-gray-400">sin IVA</p>' : '')
                 + '</div>'
                 + '</a>';
         }).join('');
