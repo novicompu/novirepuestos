@@ -5,6 +5,7 @@ var categoryLabels = {
         suspension: 'SUSPENSIÓN',
         frenos: 'FRENOS',
         aros: 'AROS',
+    llantas: 'LLANTAS',
         accesorios: 'ACCESORIOS'
     };
 
@@ -50,7 +51,11 @@ var categoryLabels = {
     function buildProductCard(p) {
         var waMsg = encodeURIComponent('Hola, me interesa el producto: ' + p.nombre + '. Podrían cotizarme?');
         var waLink = 'https://api.whatsapp.com/send/?phone=%2B593984062784&text=' + waMsg + '&app_absent=0';
-        var price = '$' + p.precio.toLocaleString('es-EC', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        var hasPrice = typeof p.precio === 'number' && p.precio > 0;
+        var price = hasPrice
+            ? '$' + p.precio.toLocaleString('es-EC', {minimumFractionDigits: 2, maximumFractionDigits: 2})
+            : 'Consultar';
+        var priceLabel = hasPrice ? 'Precio (sin IVA)' : 'Precio a consultar';
         var catLabel = categoryLabels[p.categoria] || p.categoria.toUpperCase();
         var specs = p.especificaciones || [];
         var gallery = buildGallery(p);
@@ -86,7 +91,7 @@ var categoryLabels = {
             // Precio + CTA
             + '<div class="mt-auto pt-3 border-t border-gray-100 dark:border-gray-700">'
             + '<div class="flex justify-between items-end mb-3">'
-            + '<div><p class="text-[10px] text-gray-400 uppercase tracking-wide font-medium">Precio (sin IVA)</p>'
+            + '<div><p class="text-[10px] text-gray-400 uppercase tracking-wide font-medium">' + priceLabel + '</p>'
             + '<p class="text-xl font-black text-gray-900 dark:text-white">' + price + '</p></div>'
             + '<span class="text-xs text-green-600 bg-green-100 dark:bg-green-900/50 dark:text-green-300 px-2 py-0.5 rounded-full font-semibold">En Stock</span>'
             + '</div>'
