@@ -273,7 +273,7 @@ const productos = [
         categoria: 'llantas',
         nombre: 'LLANTA HELLOWAY H556',
         descripcion: 'Llanta de maquinaria para servicio fuera de carretera, con alta tracción y vida útil extendida.',
-        precio: 0,
+        precio: 305,
         imagen: 'assets/H556.png',
         especificaciones: [
             'Marca: Helloway',
@@ -296,7 +296,7 @@ const productos = [
         categoria: 'llantas',
         nombre: 'LLANTA HELLOWAY H557',
         descripcion: 'Llanta orientada a mayor kilometraje y mejor eficiencia de combustible.',
-        precio: 0,
+        precio: 300,
         imagen: 'assets/H557.png',
         especificaciones: [
             'Marca: Helloway',
@@ -319,7 +319,7 @@ const productos = [
         categoria: 'llantas',
         nombre: 'LLANTA HELLOWAY H528',
         descripcion: 'Llanta con tracción superior y desempeño para mayor kilometraje.',
-        precio: 0,
+        precio: 300,
         imagen: 'assets/H528.png',
         especificaciones: [
             'Marca: Helloway',
@@ -342,7 +342,7 @@ const productos = [
         categoria: 'llantas',
         nombre: 'LLANTA HELLOWAY H578',
         descripcion: 'Llanta con resistencia al desgaste irregular, mayor kilometraje y mejor manejo.',
-        precio: 0,
+        precio: 300,
         imagen: 'assets/H578.png',
         especificaciones: [
             'Marca: Helloway',
@@ -366,7 +366,7 @@ const productos = [
         categoria: 'llantas',
         nombre: 'LLANTA HELLOWAY H517+',
         descripcion: 'Llanta Helloway H517+ para operación de maquinaria y trabajo pesado.',
-        precio: 0,
+        precio: 300,
         imagen: 'assets/H517plus_.png',
         especificaciones: [
             'Marca: Helloway',
