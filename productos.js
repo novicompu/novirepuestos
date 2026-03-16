@@ -1,46 +1,6 @@
 // Base de datos de productos - NoviRepuestos
 const productos = [
     {
-        id: 1,
-        slug: 'plataforma-3-ejes',
-        categoria: 'plataforma',
-        nombre: 'PLATAFORMA 3 EJES',
-        descripcion: 'Plataforma especializada para transporte de carga pesada con capacidad de hasta 40 toneladas.',
-        precio: 18260.87,
-        imagen: 'assets/plataforma 3 ejes.jpeg',
-        imagenes: [
-            'assets/plataforma 3 ejes.jpeg',
-            'assets/plataforma 3 ejes blanco1.jpg',
-            'assets/plataforma 3 ejes blanco2.jpg',
-            'assets/plataforma 3 ejes blanco3.jpg',
-            'assets/plataforma 3 ejes blanco4.jpg',
-            'assets/plataforma 3 ejes blanco5.jpg',
-            'assets/plataforma 3 ejes blanco6.jpg'
-        ],
-        especificaciones: [
-            'Dimensiones: 12.5 m × 2.55 m × 1.55 m',
-            'Capacidad de carga: hasta 40.000 kg',
-            'Peso propio: 7.500 kg',
-            'Ejes: 3 ejes de 13 T marca FUWA',
-            'Neumáticos: 13 unidades 12.00R22.5 marca Double Coin con aros 9.0-22.5',
-            'Estructura principal: acero Q345 de alta resistencia, soldadura automática',
-            'Alas: superior (14 mm) / inferior (20 mm)',
-            'Placa central: 10 mm',
-            'Altura del larguero: 500 mm',
-            'Sistema eléctrico: 24 V con luces LED, arnés modular y enchufe ISO de 7 vías',
-            'Accesorios incluidos: 1 caja de herramientas, portallanta para repuesto (1 neumático)',
-            'Acabado: granallado + pintura horneada (1 capa primer, 2 capas acabado)',
-            'Mayor durabilidad, resistencia a la corrosión y color estable',
-            'Color: opcional según requerimiento',
-            'Kingpin: 2″ tipo atornillado',
-            'Suspensión: mecánica y reforzada',
-            'Plataforma inferior: chapa de 3 mm',
-            'Frenos: neumático dual, de alta seguridad',
-            'Patas de apoyo (landing gear): 28 t marca JOST'
-        ],
-        destacado: true
-    },
-    {
         id: 2,
         slug: 'eje-americano-13t-5',
         categoria: 'ejes',
