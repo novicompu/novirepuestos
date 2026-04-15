@@ -1,8 +1,8 @@
-Ôªø// catalogo-new.js - Gestor del catalogo con dise√±o Tailwind
+// catalogo-new.js - Gestor del catalogo con diseÒo Tailwind
 var categoryLabels = {
         plataforma: 'PLATAFORMAS',
         ejes: 'EJES & TREN MOTRIZ',
-        suspension: 'SUSPENSI√ìN',
+        suspension: 'SUSPENSI”N',
         frenos: 'FRENOS',
         aros: 'AROS',
     llantas: 'LLANTAS',
@@ -12,7 +12,7 @@ var categoryLabels = {
     var selectedCategories = new Set();
     var searchQuery = '';
 
-    //  Galer√≠a por tarjeta 
+    //  GalerÌa por tarjeta 
     function buildGallery(p) {
         var imgs = (p.imagenes && p.imagenes.length > 1) ? p.imagenes : [p.imagen];
         var badge = p.destacado
@@ -49,8 +49,8 @@ var categoryLabels = {
 
     //  Card completa 
     function buildProductCard(p) {
-        var waMsg = encodeURIComponent('Hola, me interesa el producto: ' + p.nombre + '. Podr√≠an cotizarme?');
-        var waLink = 'https://api.whatsapp.com/send/?phone=%2B593984062784&text=' + waMsg + '&app_absent=0';
+        var waMsg = encodeURIComponent('Hola, me interesa el producto: ' + p.nombre + '. PodrÌan cotizarme?');
+        var waLink = 'https://api.whatsapp.com/send/?phone=%2B593983520003&text=' + waMsg + '&app_absent=0';
         var hasPrice = typeof p.precio === 'number' && p.precio > 0;
         var price = hasPrice
             ? '$' + p.precio.toLocaleString('es-EC', {minimumFractionDigits: 2, maximumFractionDigits: 2})
@@ -72,15 +72,15 @@ var categoryLabels = {
               + '</div>'
               + '<button type="button" class="specs-toggle text-xs text-secondary hover:text-primary font-semibold mt-2 flex items-center gap-0.5 transition">'
               + '<span class="specs-toggle-icon material-symbols-outlined text-[14px]">expand_more</span>'
-              + '<span class="specs-toggle-label">Ver ' + (specs.length - 4) + ' especificaciones m√°s</span></button>'
+              + '<span class="specs-toggle-label">Ver ' + (specs.length - 4) + ' especificaciones m·s</span></button>'
             : '';
 
         return '<div class="product-card flex-1 bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300 group flex flex-col">'
-            // Galer√≠a
+            // GalerÌa
             + gallery
             // Cuerpo
             + '<div class="p-4 flex-1 flex flex-col">'
-            // Categor√≠a
+            // CategorÌa
             + '<div class="text-[11px] font-bold text-secondary tracking-wider uppercase">' + catLabel + '</div>'
             // Nombre
             + '<h3 class="font-bold text-gray-900 dark:text-white text-lg leading-tight mb-3 group-hover:text-primary transition-colors">' + p.nombre + '</h3>'
@@ -183,9 +183,9 @@ var categoryLabels = {
         });
     })();
 
-    //  Eventos de galer√≠a y especificaciones 
+    //  Eventos de galerÌa y especificaciones 
     function attachCardEvents(grid) {
-        // Galer√≠a: flechas y dots
+        // GalerÌa: flechas y dots
         grid.querySelectorAll('.gallery-arrow').forEach(function(btn) {
             btn.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -239,12 +239,12 @@ var categoryLabels = {
                 extra.classList.toggle('hidden', isOpen);
                 icon.textContent = isOpen ? 'expand_more' : 'expand_less';
                 var hidden = parseInt(btn.dataset && btn.dataset.hidden) || parseInt(label.textContent.match(/\d+/)?.[0]) || 0;
-                label.textContent = isOpen ? 'Ver ' + hidden + ' especificaciones m√°s' : 'Ocultar';
+                label.textContent = isOpen ? 'Ver ' + hidden + ' especificaciones m·s' : 'Ocultar';
                 if (!btn.dataset.hidden) btn.dataset.hidden = hidden;
             });
         });
 
-        // GTM + Pixel: WhatsApp desde cat√°logo
+        // GTM + Pixel: WhatsApp desde cat·logo
         grid.querySelectorAll('.wa-catalog-btn').forEach(function(btn) {
             btn.addEventListener('click', function() {
                 var id = btn.dataset.productId;
@@ -334,7 +334,7 @@ var categoryLabels = {
 
 window.NRCatalog = { buildProductCard: buildProductCard, attachCardEvents: attachCardEvents };
 
-//  Cat√°logo: filtros y render (solo en p√°gina de cat√°logo)
+//  Cat·logo: filtros y render (solo en p·gina de cat·logo)
 document.addEventListener('DOMContentLoaded', function() {
     if (typeof productos === 'undefined' || !document.getElementById('products-grid')) return;
     document.querySelectorAll('[data-cat]').forEach(function(checkbox) {
@@ -379,7 +379,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Leer par√°metro ?cat= de la URL y pre-aplicar filtro
+    // Leer par·metro ?cat= de la URL y pre-aplicar filtro
     var urlCat = new URLSearchParams(window.location.search).get('cat');
     if (urlCat) {
         var catValues = urlCat.split(',').map(function(c){ return c.trim().toLowerCase(); });
