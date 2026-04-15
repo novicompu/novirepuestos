@@ -65,8 +65,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="bg-gray-900 text-gray-300 text-xs py-1.5 px-4 hidden sm:block">
         <div class="max-w-[1600px] mx-auto flex justify-between items-center">
             <div class="flex gap-4">
-                <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">phone</span> +593 98 752 3946</span>
-                <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">chat</span> +593 98 406 2784</span>
+                <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">phone</span> +593 99 258 0233</span>
+                <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">chat</span> +593 98 352 0003</span>
             </div>
             <span class="text-gray-400">Lunes a Viernes 8:00 &ndash; 17:00</span>
         </div>
@@ -152,8 +152,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div>
                 <h4 class="font-bold text-lg mb-4 text-primary">Contacto Comercial</h4>
                 <ul class="space-y-2 text-gray-400 text-sm">
-                    <li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">chat</span><a href="https://api.whatsapp.com/send/?phone=%2B593987523946&text&app_absent=0" target="_blank" class="hover:text-white">+593 98 752 3946</a></li>
-                    <li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">chat</span><a href="https://api.whatsapp.com/send/?phone=%2B593984062784&text&app_absent=0" target="_blank" class="hover:text-white">+593 98 406 2784</a></li>
+                    <li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">chat</span><a href="https://api.whatsapp.com/send/?phone=%2B593992580233&text&app_absent=0" target="_blank" class="hover:text-white">+593 99 258 0233</a></li>
+                    <li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">chat</span><a href="https://api.whatsapp.com/send/?phone=%2B593983520003&text&app_absent=0" target="_blank" class="hover:text-white">+593 98 352 0003</a></li>
                     <li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">email</span> plataforma1@novirepuestos.com</li>
                     <li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">schedule</span> Lun&ndash;Vie 8:00&ndash;17:00</li>
                 </ul>
@@ -331,7 +331,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     function renderProduct(p) {
         var imgs = (p.imagenes && p.imagenes.length > 1) ? p.imagenes : [p.imagen];
         var waMsg = encodeURIComponent('Hola, me interesa el producto: ' + p.nombre + '. ¿Podrían cotizarme?');
-        var waLink = 'https://api.whatsapp.com/send/?phone=%2B593984062784&text=' + waMsg + '&app_absent=0';
+        var waLink = 'https://api.whatsapp.com/send/?phone=%2B593983520003&text=' + waMsg + '&app_absent=0';
         var catLabel = categoryLabels[p.categoria] || p.categoria;
         var hasPrice = typeof p.precio === 'number' && p.precio > 0;
         var price = hasPrice ? formatPrice(p.precio) : 'Consultar';
